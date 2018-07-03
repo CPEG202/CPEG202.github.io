@@ -1,0 +1,109 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Delay of Combinational Circuits
+            </h1>
+<h2>Timing Issues of Digital Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                243
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="propagation-delays">Propagation Delays</h2>
+<p data-source-line="3">Electronic signals travel along conductors at about 8cm per nanosecond (the actual speed depends on the conductor material, dimensions, and other external factors). Electronic switches, like the field-effect transistors (FETs) used in logic circuits, typically require up to several hundred picoseconds to turn on and off. When a switch does turn on, it must transfer charge to or from the capacitance at its output node, and again, this takes time. All of these factors contribute to the simple fact that time is required for electric signals to propagate through logic circuits. Restated, time is required to process information in digital circuits. This processing time is divided between the less significant signal transmission time, and the more significant propagation delays associated with switching logic circuits. If not managed properly, propagation delays can result in logic circuits that run too slowly to meet their requirements, or that fail altogether.</p>
+<p data-source-line="5">A simple logic circuit, its equivalent CMOS circuit, and a timing diagram are shown below in Fig. 1 with a particular intra-gate node (N1) highlighted. The timing diagram illustrates logical behavior of signals as a function of time. Note that if B changes from low to high when C is high as shown, the circuit node N1 changes from high to low after a time <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">τ\_1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq> has elapsed. The time <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">τ\_1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq> is the “propagation delay” associated with the NAND gate. Referring to the CMOS circuit, the propagation delay <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">τ\_1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq> models transistor Q1 turning on and discharging node N1 from Vdd to GND. Although there is no actual capacitor at the output node, all of the signal wires and FET connections associated with the circuit node N1 behave like a single capacitor, and this “parasitic” accumulated capacitance is shown lumped into a single component labeled C1. As is the case with any capacitor, C1 cannot transition from Vdd to GND immediately; the propagation delay <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">τ\_1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq> models the time required to discharge this capacitance.</p>
+<figure data-source-line="7"><img alt="Figure 1. Propagation Delay" src="../images/c34668396d0f9b9b315d8abdfe6866f5.svg"/><figcaption>Figure 1. Propagation Delay</figcaption></figure>
+<p data-source-line="9">As the C1 capacitance discharges, the voltage at N1 decreases below the input switching threshold of the inverter, the inverter drives its output Y to a ‘1’ after the propagation delay <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">τ\_3</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq>. The propagation delay of the OR gate (<eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>τ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">τ\_2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq>) is longer than the delay for the inverter—in general, different gates will have different propagation delays. Further, since the delay through a given gate depends on the number of other gates and wires that it must drive, different instances of the same type of gate in a given circuit will have different propagation delays as well. In a given digital circuit, a designer is typically interested in the system response time rather than individual gate delays. For this circuit, the system response times TBX and TBY that show the time required for signals X and Y to change in response to a change on signal B are shown at the bottom of the timing diagram.</p>
+<p data-source-line="11">The amount of time required to drive an output from ‘0’ to ‘1’ (or vice-versa) depends on how much capacitance is present on the output node. In a CMOS circuit, the capacitance on a given output node is determined by how many “downstream” gate inputs are connected to the output node (for example, in the circuit above, node A is driving a single gate input while node N1 is driving two gate inputs). As a first approximation, it is reasonable to assume a linear relationship between the number of downstream gates driven by an output node and the amount of time required to transition the output node. That is, if an output node connected to 2 downstream gate inputs can transition from ‘0’ to ‘1’ in time X, the same gate driving 4 downstream gate inputs can transition in time 2X.</p>
+<p data-source-line="13">Different circuit implementation technologies have different typical delays. For example, a circuit implemented in a modern FPGA will typically have delays that are much smaller than a circuit implemented in a five-year-old FPGA, and in turn, both FPGA circuits would have far smaller delays than a similar circuit built from discrete gates. The smallest delay times (on the order of 10’s of picoseconds) are available in the most expensive technologies, and these are reserved for “fully custom” chip designs that sell in high-volumes (like Pentium processors), or for designs that require the best performance for specialized applications (like sensitive scientific instruments). Whatever the technology, circuit delays are affected by variations in the manufacturing process, so no two devices from the same manufacturing line will exhibit exactly the same delay. Further, delays can change when circuits are exposed to different operating environments—both temperature and power supply voltage can greatly alter delays on various circuit nodes.</p>
+<h2 data-source-line="15" id="circuit-delays-and-cad-tools">Circuit Delays and CAD Tools</h2>
+<p data-source-line="17">When a design is “implemented” (i.e., translated and mapped to a given technology) in a CAD tool like Xilinx’s® ISE/Webpack, a separate database containing specific information about every component in the design is created. This database contains information that defines the input/output relationships for each component, including the time required for input signal changes to propagate through the component to cause output signal changes. Delay information is typically stored separately for rising-edge transitions (i.e., a 0-to-1 transition) and for falling-edge transitions. Different delay values are used for rising and falling edges to account for the differences in the FETs that are used to drive an output node to ‘0’ or ‘1’. In a falling transition, nFETs are responsible for driving the output node to ‘0’, while in a rising transition, pFETs are responsible for driving an output node to ‘1’ (see the circuit example above). In CMOS circuits, nFETs can typically pass twice the amount of current as similarly sized pFETs, so driving an output node to ‘1’ typically takes twice as long as driving an output to ‘0’. Some simpler CAD tools ignore this phenomenon, and use a single number to define “gate delay”. This single gate delay number is applied to all inputs for both rising and falling transitions.</p>
+<h2 data-source-line="20" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="22">
+<li>The propagation delay of a signal path is the time it takes between the change in input and the change in output for that signal.</li>
+<li>If not managed properly, propagation delays can result in logic circuits that run too slowly to meet their requirements, or that fail altogether.</li>
+<li>The timing diagram illustrates logical behavior of signals as a function of time.</li>
+<li>The amount of time required to drive an output from ‘0’ to ‘1’ (or vice-versa) depends on how much capacitance is present on the output node.</li>
+<li>Different circuit implementation technologies have different typical delays.</li>
+<li>When a design is “implemented” (i.e., translated and mapped to a given technology) in a CAD tool like Xilinx’s ISE/Webpack, a separate database containing specific information about every component in the design is created.</li>
+<li>Delay information is typically stored separately for rising-edge transitions (i.e., a 0-to-1 transition) and for falling-edge transitions. Different delay values are used for rising and falling edges to account for the differences in the FETs that are used to drive an output node to ‘0’ or ‘1’.</li>
+<li>When the design is synthesized to a given technology, the CAD tools can automatically calculate accurate delays for every single circuit node.
+In general, the delays encountered in a given circuit cannot be precisely known until the circuit is transformed into its most basic structural representation. The most basic representation depends on the technology that will be used to implement the circuit. When circuits are synthesized to a given device like an FPGA or CPLD, all the “logical” components and interconnections specified in the source file are mapped to particular physical devices in the chip. Once this mapping happens, it is possible to calculate the delays for every circuit node in the design with a high degree of accuracy. Prior to this mapping, it is only possible to estimate the delays. Whether calculated or estimated, all useful logic simulators must accommodate delay values so that designers can simulate the behavior of physical circuits. In fact, it is fair to say that accurate delay modeling is the most important and most useful feature of a simulator. Designers have learned that they must know the effects of all delays on all circuit nodes prior to releasing a design to manufacturing.</li>
+</ul>
+<p data-source-line="32">In a modern design flow, a circuit is initially designed without paying much attention to delays. In this early stage, a simulator is used only to check that the circuit logic has been correctly defined. When the design is synthesized to a given technology, the CAD tools can automatically calculate accurate delays for every single circuit node. Then, the circuit can be re-simulated, and the designer can study the circuit’s behavior with accurate node delays included. Delay information is typically stored in a file called a “standard delay format”, or .sdf file. In a post-synthesis simulation, the .sdf file is used by the simulator along with the circuit definition and the stimulus file to create a highly accurate output.</p>
+<p data-source-line="34">Many schematic-based CAD tools allow designers to include delays at the time a circuit is initially specified. These delays are by definition “best guesses”, but they are nevertheless useful in studying a given circuit’s performance. These delay values can easily be modified to simulate a circuit’s behavior under different operating conditions that might arise. For example, best-case or worst-case delays could be used to model circuit performance at different operating temperatures or supply voltages.</p>
+<p data-source-line="36">In problems and exercises up to this point, the focus has been on creating functionally correct circuits, and the effects of gate delays have been ignored. Going forward, you will come to appreciate that creating a “functionally correct” circuit is the simplest part of solving a given problem. The greater challenge often lies in creating a circuit that will always work in a given physical environment, with all the attendant gate delay and timing issues, and in validating circuit performance through testing.</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

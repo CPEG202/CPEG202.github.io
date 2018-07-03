@@ -1,0 +1,99 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Structural Implementation of State Diagram
+            </h1>
+<h2>Sequential Circuit Design</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                202
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="structural-implementation-of-state-diagram">Structural Implementation of State Diagram</h2>
+<p data-source-line="2">A state diagram with state codes and complete branching conditions contains all information required for the design of optimal next-state and output logic circuits. In fact, a state diagram contains exactly the same information as the state table (or next-state truth table), with the added benefit of showing sequential flow. By following a few simple rules, the information in a state diagram can be transferred directly to K-maps so that a minimal next state logic circuit can be found.</p>
+<p data-source-line="4">The process is illustrated in the three figures below using a state diagram similar to the one presented earlier (but in this state diagram, the GRN output is now a Mealy output that combines the X and Y inputs with state codes—see states ‘01’ and ‘11’). In the first step, all branch conditions are checked to ensure that neither the sum rule nor the exclusion rule is violated (branch condition checking uses the logic graphs as shown in Fig. 1). State codes are assigned so that a minimum number of bits change across the set of all state transitions. In this example, it is not possible to use unit-distant coding for all state transitions, nor is it possible to match outputs to state codes. The state codes shown result in the greatest number of transitions having unit-distant codes. The second step is to transfer information from the state diagram to K-maps so that logic circuits can be defined.</p>
+<figure data-source-line="6"><img alt="Figure 1. State diagram of a state machine with meanly output." src="../images/e2b2f2330ddef66e9391edb8c72d54aa.svg"/><figcaption>Figure 1. State diagram of a state machine with meanly output.</figcaption></figure>
+<p data-source-line="8">In this example, two state variables and two outputs require four K-maps, one for each of the next-state circuit, and one for each output. The next-state circuits will drive the D inputs of the state-variable flip-flops, and the output logic circuits will produce outputs based on the state variables and inputs. The state variables are used as the K-map index variables for all four maps. In the next- state maps, branch condition inputs are shown as entered variables. Thus, loops in the next-state maps will be in terms of the state codes (axis variables) and inputs (entered variables). For output maps, a ‘1’ or ‘0’ is placed in a cell to indicate whether an output is asserted in that state; for Mealy outputs, the input variables that drive the output are placed in the maps as entered variables. The “Rules” below describe to process of populating K-maps in detail.</p>
+<ol data-source-line="10">
+<li>Sketch one K-map for each state variable and each output. The state variables are the K-map index variables (and so K-map size is determined by the number of state variables). Since state variables are used on the K-map indexes, each cell K-map cell corresponds to a present state.</li>
+<li>For next state K-maps, enter branch conditions from each present state into the corresponding K-map cell if, and only if, the branch leads to a next state where the state DFF being mapped is ‘1’.</li>
+<li>For Moore model K-maps, enter a ‘1’ in each K-map cell where the output must be asserted; for Mealy model K-maps, enter a ‘1’ for unconditional outputs, or the variable (or expression) for conditional outputs in each K-map cell where the output must be asserted.</li>
+</ol>
+<p data-source-line="14">The process is applied to the state diagram above in Fig. 1, resulting in the K-maps shown below in Fig. 2.</p>
+<figure data-source-line="16"><img alt="Figure 2. Represent next state logic and output logic in K-Maps." src="../images/aadadd78e41ac678dec75c630c0b8637.svg"/><figcaption>Figure 2. Represent next state logic and output logic in K-Maps.</figcaption></figure>
+<p data-source-line="18">The third and final step is to create a circuit from the equations obtained from looping the K-maps. A block diagram of the circuit is shown below in Fig. 3. You should recognize the Mealy model schematic. Following the methods described and with sufficient practice, a wide variety of state machines can be designed.</p>
+<figure data-source-line="20"><img alt="Figure 3. Structural implementation of state diagram." src="../images/75ee4e5cbc54e067930c31a774970df1.svg"/><figcaption>Figure 3. Structural implementation of state diagram.</figcaption></figure>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

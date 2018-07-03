@@ -1,0 +1,107 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Comparator
+            </h1>
+<h2>Arithmetic Circuit: Bit-Sliced Design</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                349
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="bit-slice-design-approach">Bit-Slice Design Approach</h2>
+<div class="row"><div class="col-md-8"><p>When designing circuits with bussed inputs that represent binary numbers, it is often easier to consider a circuit designed for a single pair of bits, rather than for the entire binary number. The reason is straightforward—a truth table describing a circuit operating on two 8-bit buses requires 65K rows, whereas a circuit operating on a single pair of bits requires only four rows. When considering a design for a single pair of bits, the goal is to create a circuit that can simply be replicated N times—once for each bit.</p>
+<p>Many circuits that operate on binary numbers can be easily broken down into smaller, bit-wise operations. Some circuits defy this approach, and a bit-by-bit requirements analysis does not indicate any likely bit-slice solutions (i.e., some circuits that convert one type of data code to another fall in this category). Thus, the first goal in applying the bit-slice design method is to determine whether it is possible to express a given problem as an assemblage of bit-wise operations.</p>
+<p>In a typical bit-slice design, information must be passed between adjacent bits. For example, in a circuit that can add two binary numbers, any pair of bits may generate a “carry out” to the next more significant bit pair. Any such inter-slice dependencies must be identified and included in the design of the bit-slice module. Dealing with these additional “internal” signals may require some additional gates that would not have been needed in a non-bit slice design. But most often, the additional gates are a very small price to pay for enabling a more practicable design approach. All of the designs in this lab will use the bit-slice design approach.</p>
+</div><div class="col-lg-4"><figure><img alt="Figure 1. Bit-Slice design approach." src="../images/26a220c5cfec0a292f52ee909bc0fe72.svg"/><figcaption>Figure 1. Bit-Slice design approach.</figcaption></figure>
+</div></div><h2 data-source-line="15" id="comparators">Comparators</h2>
+<div class="row"><div class="col-md-8"><p>A magnitude comparator is a device that receives two N-bit inputs and asserts one of three possible outputs depending on whether one input is greater than, less than, or equal to the other (simpler comparators, called equality comparators, provide a single output that is asserted whenever the two inputs are equal). Comparators are readily described in behavioral Verilog, but they are somewhat more difficult to design using structural or schematic methods. In fact, comparator design is an excellent vehicle to showcase the power of behavioral design, and the relative tedium of structural design.</p>
+</div><div class="col-lg-4"><figure><img alt="Figure 2. Block definition of 8-bit magnitude comparator." src="../images/645d82229ccdc6cadb1df8f957dfe813.svg"/><figcaption>Figure 2. Block definition of 8-bit magnitude comparator.</figcaption></figure>
+</div></div><div class="row"><div class="col-md-8"><p>A structural comparator design is best attacked using the bit-slice method. Consider an 8-bit magnitude comparator circuit that creates the GT, LT, and EQ output signals for two 8-bit operands. In Fig. 3, if A=159 and B=155 are presented to the comparator, then the GT output should be asserted, and the LT and EQ outputs should be de-asserted. The operand bits are equal in all slices except the bit 2 slice. Somehow, the inequality in the bit 2 slice must influence the overall circuit outputs, forcing GT to a ‘1’ and LT and EQ to a ‘0’. Any bit pair could show an inequality, and any bit-slice module design must work in any bit position.</p>
+</div><div class="col-lg-4"><figure><img alt="Figure 3. Compare two binary numbers (A = 159, B = 155)" src="../images/045316a7527daf86bd65763b25090c39.svg"/><figcaption>Figure 3. Compare two binary numbers (A = 159, B = 155)</figcaption></figure>
+</div></div><p data-source-line="34">Clearly, a bit-slice design cannot work in isolation, using only the two data bits as inputs. A bit-slice design must take into account information generated from neighboring bit-slices. Specifically, each comparator bit-slice must receive not only the two operand input bits, but also the GT, LT, and EQ outputs of its less-significant bit neighbor. In the present example, the bit 3 slice in isolation would assert the EQ output, but the inequality in the bit 2 slice should force the bit 3 slice to assert GT and de-assert both EQ and LT. In fact, the outputs from any stage where the operand bits are equal depend on the inputs arising from the neighboring stage.</p>
+<div class="row"><div class="col-md-8"><p>A bit-slice magnitude comparator circuit must have five inputs and three outputs as shown in the truth table in Fig. 4. As with any combinational design, the truth table completely specifies the required comparator bit-slice behavior. Normally, a truth table for a five-input function would require 32 rows. The 8-row truth table in Fig. 4 is adequate because certain input combinations are not possible (i.e., the inputs from the neighboring slice are mutually exclusive), and others are immaterial (i.e., if the current operand inputs show A &gt; B, the neighboring slice inputs do not matter). You are encouraged to examine the truth table in detail, and convince yourself that you agree with the information it contains.</p>
+<p>The truth table can be used to find a minimal bit-slice comparator circuit using pencil-and-paper methods or computer-based methods. Either way, a bit-slice circuit with the block diagram shown in the figure below can be designed. Once designed, a bit-slice circuit can be used in an N-bit comparator as shown in Fig. 5. Note that for the N-bit comparator, no neighbor bit-slice exists for the least-significant bits; those non-existent bits are assumed to be equal. Note also that the overall comparator output arises from the outputs from the most-significant bit pair. In the exercises and lab project that accompany this module, you are asked to design a comparator bit-slice design as well as an 8-bit comparator circuit.</p>
+</div><div class="col-lg-4"><figure><img alt="Figure 4. Truth table for bit-sliced magnitude comparator" src="../images/2cbb830dc061460d5380cd4bff6e5438.svg"/><figcaption>Figure 4. Truth table for bit-sliced magnitude comparator</figcaption></figure>
+</div></div><figure data-source-line="49"><img alt="Figure 5. Block diagram of 8-bit magnitude comparator using bit-sliced magnitude comparator." src="../images/4e07b3a57379c129dae93e11f4be0186.svg"/><figcaption>Figure 5. Block diagram of 8-bit magnitude comparator using bit-sliced magnitude comparator.</figcaption></figure>
+<h2 data-source-line="51" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="53">
+<li>When designing circuits with bussed inputs that represent binary numbers, it is often easier to consider a circuit designed for a single pair of bits, rather than for the entire binary number. This method of analysis is called Bit-Slice.</li>
+<li>Dealing with these additional internal signals may require some additional gates that would not have been needed in a non-bit slice design. But most often, the additional gates are a very small price to pay for enabling a more practicable design approach.</li>
+<li>A magnitude comparator is a device that receives two N-bit inputs and asserts one of three possible outputs depending on whether one input is greater than, less than, or equal to the other (simpler comparators, called equality comparators, provide a single output that is asserted whenever the two inputs are equal).</li>
+<li>The truth table can be used to find a minimal bit-slice comparator circuit using pencil-and-paper methods or computer-based methods.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

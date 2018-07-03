@@ -1,0 +1,110 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                K-Maps with Entered Variables
+            </h1>
+<h2>Logic Minimization</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                309
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="entered-variables">Entered Variables</h2>
+<p data-source-line="3">Entered variable maps simplify the process further by visually minimizing a K-map. The compression of the map makes a multi-variable system much easier to visualize and minimize.</p>
+<p data-source-line="5">Truth tables provide the best mechanism for completely specifying the behavior of a given combinational logic circuit, and K-maps provide the best mechanism for visualizing and minimizing the input-output relationships of digital logic circuits. So far, we have shown input variables across the top left of a truth table and around the periphery of K-maps. This allows every state of an output signal to be defined as a function of the input patterns of 0’s and 1’s on a given row in a truth table, or as the binary coding for a given K-map cell. Without any loss of information, truth tables and K-maps can be translated into a more compact form by moving input variables from the top-left of a truth table to the output column, or from outside the K-map to inside the cells of a K-map. Although it will not be clear until later modules, the use of entered variables and compressed truth tables and K-maps often makes a multi-variable system much easier to visualize and minimize.</p>
+<p data-source-line="7">The translation mechanics are illustrated in the figures below, where a 16-row truth table is compressed into both 8-row and 4-row truth tables. In the 8-row truth table, the variable D is no longer used to identify an input column. Instead, it appears in the output column, where it encodes the relationship between two rows of output logic values and the D input. In the 4-row truth table, variables C and D are no longer used to identify an input column, but rather in the output column where they encode the relationship between four rows of the output logic values and the C and D inputs.</p>
+<figure data-source-line="9"><img alt="Figure 1. Compressing truth tables and present in compressed K-Maps" src="../images/749749104867d829ea03a2e9b8fa48e6.svg"/><figcaption>Figure 1. Compressing truth tables and present in compressed K-Maps</figcaption></figure>
+<p data-source-line="11">The 4-cell K-map is reproduced to the right, this time showing the implied sub-maps that illustrate the relationship between C and D for each of the four unique values of the A and B variables. For any entered variable K-map, thinking of (or actually sketching) the sub-maps can help identify the correct encoding for the entered variables. Note that truth table row numbers can be mapped to cells in the sub-maps by reading the K-map index codes, starting with the super-map code, and appending the sub-map code. For example, the shaded box in the sub-map is in box number 1110.</p>
+<p data-source-line="13">This same map compression is illustrated below, showing the mapping from non-compressed K-maps directly to compressed K-maps. The colors show how cells in the uncompressed map are translated to the cells in the compressed map. Note that two cells in the 16-cell map are compressed into a single cell in the 8-cell map, and that four cells in the 16-cell map are compressed into a single cell in the 4-cell map.</p>
+<figure data-source-line="15"><img alt="Figure 2. Different ways to compress the same truth table" src="../images/0c5575a43dc220000ae3d1fed98b694f.svg"/><figcaption>Figure 2. Different ways to compress the same truth table</figcaption></figure>
+<p data-source-line="17">Minterm SOP equations and maxterm POS equations can also be translated directly into entered variable K-maps as shown in the illustration below (the smaller numbers at the bottom of K-map cells show the minterm or maxterm numbers assigned to that cell). The minimum number of input variables is assumed when encoding minterms or maxterms into the K-maps. For example, if the largest minterm present is 14, four input variables are assumed.</p>
+<figure data-source-line="19"><img alt="Figure 3. Construct minterm and maxterm from a compressed K-Map" src="../images/4f36a7cf77e2dab59d9eab5e1ddb13c6.svg"/><figcaption>Figure 3. Construct minterm and maxterm from a compressed K-Map</figcaption></figure>
+<p data-source-line="21">Looping entered variable K-maps follows the same general principles as looping ‘1-0’ maps—optimal groupings of 1’s and entered variables (EVs) are sought for SOP circuits, and optimal groupings of 0’s and EVs are sought for POS circuits. The rules are similar: all EVs and all 1’s (or 0’s) must be grouped in the largest possible “power of 2” sized rectangular or square grouping, and the process is complete when all EVs and all 1’s (or 0’s) are included in an optimal loop. The differences are that similar EVs can be included in loops by themselves or with 1’s (or 0’s), and care must be taken when looping cells with 1’s (or 0’s), because a ‘1’ (or ‘0’) indicates that all possible combinations of EVs are present in that map cell, and loops that include 1’s (or 0’s) together with EVs often include only a subset of the possible combinations of the EVs (this is illustrated in Fig. 4 below). Looping an EV K-map is complete when all minterms or maxterms are contained in an adequate group. Perhaps the most challenging aspect is to ensure that all possible combinations of EVs have been accounted for in cells that contain 1’s (or 0’s).</p>
+<p data-source-line="23">To help understand looping in EV K-maps, it may be helpful to think of the sub-maps implied by every K-map cell. As shown in the figures below, the variables in K-map cells can arise from looping the ‘1-0’ information entered into cells in the implied sub-maps. A looping of information in adjacent cells in the EV K-map can include 1’s (or 0’s) in the sub-maps that appear in the same positions in the sub-maps.</p>
+<p data-source-line="25">When reading the loop equations, the SOP product terms (or POS sum terms) for each loop must include the variables that define the loop domain and the EVs contained within the loop. For example, in the first example below, the first SOP term <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">\overline A \cdot \overline B \cdot D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8833300000000001em;"></span><span class="strut bottom" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="base"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.02778em;">D</span></span></span></span></eq> includes the loop domain <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline A \cdot \overline B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8833300000000001em;"></span><span class="strut bottom" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="base"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span></span></span></span></eq> and the entered variable D.</p>
+<figure data-source-line="27"><img alt="Figure 4. Looping K-Maps with entered variables" src="../images/b448fff1b67407c710957698840af297.svg"/><figcaption>Figure 4. Looping K-Maps with entered variables</figcaption></figure>
+<p data-source-line="29">Cells in entered variable maps might contain a single entered variable or a logic expression of two or more variables. When looping cells that contain logic expressions, it helps to recognize the differences in SOP and POS looping mechanics. As compared to a single EV in a K-map cell, a product term in a cell represents a smaller SOP domain, because the more AND’ed variables in a product term, the smaller the defined logic domain. A sum term in a cell represents a larger SOP domain, because the more OR’ed variables in a sum term, the larger the defined logic domain. When looping SOP equations from an EV map, cells containing product terms have fewer 1’s in their sub-maps than cells that contain single EVs, and cells with sum terms contain more 1’s. Similarly, when looping POS equations from an EV map, cells containing sum terms have fewer 0’s in their sub-maps than cells that contain single EVs, and cells with product terms contain more 0’s.</p>
+<p data-source-line="31">Don’t cares in entered variable K-maps serve the same purpose as they did in ‘1-0’ maps; they indicate input conditions that cannot occur or that are irrelevant, and they can be included in groupings of 1’s, 0’s, or entered variables as needed to minimize logic. As shown in Fig. 5 below, a given don’t care can be taken as a ‘1’, ‘0’, or entered variable as needed for any particular loop.</p>
+<figure data-source-line="33"><img alt="Figure 5. Looping an entered variable K-Maps with Don't Cares" src="../images/629c2aefd0fcd2cc9869ff3995555f22.svg"/><figcaption>Figure 5. Looping an entered variable K-Maps with Don’t Cares</figcaption></figure>
+<h2 data-source-line="35" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="36">
+<li>Without any loss of information, truth tables and K-maps can be translated into a more compact form by moving input variables from the top-left of a truth table to the output column, or from outside the K-map to inside the cells of a K-map.</li>
+<li>Minterm SOP equations and maxterm POS equations can also be translated directly into entered variable K-maps.</li>
+<li>Looping entered variable K-maps follows the same general principles as looping ‘1-0’ maps.</li>
+<li>Cells in entered variable maps might contain a single entered variable or a logic expression of two or more variables.</li>
+<li>Don’t cares in entered variable K-maps serve the same purpose as they did in ‘1-0’ maps.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

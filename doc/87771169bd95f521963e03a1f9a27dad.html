@@ -1,0 +1,316 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    5.3
+                                            Clock Divider
+            </h1>
+<h2>Basic Cells of Sequential Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                639
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="2">A flip-flop is an edge-triggered memory circuit. In this project, you will implement a flip-flop behaviorally using Verilog®, and use a bunch of flip-flops to implement a clock divider that blinks the LEDs.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Download <a class="btn btn-sm btn-warning" href="/downloads/3f4ceaee772ee5bbd654cf96f936de90.pdf"><strong>Submission Form 5</strong></a> <a class="btn btn-sm btn-warning" href="/downloads/e13cc24ee1827193ed75ae8eea9e847b.pdf"><strong>Problem Set 5</strong></a>;</li>
+<li>Be able to describe digital circuit using logic operators;</li>
+<li>Be able to write test bench and simulate circuit using the Vivado Simulator;</li>
+<li>Be able to model and simulate circuit delay.</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Understand the functionality of D flip-flop;</li>
+<li>Be able to describe flip-flop in Verilog behaviorally;</li>
+<li>Understand the simple clock divider circuit.</li>
+</ul>
+</div></div><h2 data-source-line="22" id="background">Background</h2>
+<div class="row"><div class="col-md-3"><figure><img alt="Figure 1. D-FF block diagram." src="../images/799f52d00872c96194990cfa928dc36d.svg"/><figcaption>Figure 1. D-FF block diagram.</figcaption></figure>
+</div><div class="col-md-6"><p>A clock signal is needed in order for sequential circuits to function. Usually the clock signal comes from a crystal oscillator on-board. The CPU used on Real Digital®’s Blackboard has a maximum frequency of 667 MHz and the FPGA clock frequency can go up to 200MHz. However, some peripheral controllers do not need such a high frequency to operate; thus, you will use D Flip-Flops to create clock dividers.</p>
+</div><div class="col-lg-3 col-md-6 col-sm-12"><ul>
+<li><a class="btn btn-group-justified btn-sm btn-success" href="/doc/c5426c7a20a5a495dc251e9050a3b3b4"><strong>Flip-Flops</strong></a></li>
+<li><a class="btn btn-group-justified btn-sm btn-success" href="/doc/850c8dedc5e912d8a4e2f1befa65f1fb"><strong>Cascade Clock Dividers</strong></a></li>
+</ul>
+</div></div><p data-source-line="36">A D flip-flop (D-FF) is one of the most fundamental memory devices. Figure 1 displays the block diagram for a D-FF. It typically has three inputs: a data input that defines the next state, a timing control input that tells the flip-flop exactly when to “memorize” the data input, and a reset input that can cause the memory to be reset to ‘0’ regardless of the other two inputs (usually referred as asynchronous reset).</p>
+<h2 data-source-line="38" id="step-1-implement-d-ff-in-verilog">Step 1: Implement D-FF in Verilog</h2>
+<p data-source-line="39">In this step, you are going to implement a D-FF with asynchronous reset.</p>
+<h3 data-source-line="41" id="declare-dff-module">Declare DFF Module</h3>
+<p data-source-line="43">As the block diagram in Fig. 1 shows, D flip-flops have three inputs: data input (<code>D</code>), clock input (<code>clk</code>), and asynchronous reset input (<code>rst</code>, active high), and one output: data output (<code>Q</code>).</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> dff(
+    <span class="hljs-keyword">input</span> D,
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> Q
+);
+</code></pre>
+<h3 data-source-line="55" id="describe-dff-behaviorally">Describe DFF Behaviorally</h3>
+<p data-source-line="56">To describe the behavior of the flip-flop, you are going to use an <code>always</code> block. On the contrary to combinational circuits, the output of flip-flop changes when a rising edge or falling edge of clock occurs or the reset is asserted. In other words, output Q is sensitive to clock signal <code>clk</code> and reset signal <code>rst</code>. So you can describe the circuit as follows: always at rising edge of clk or rising of rst, if rst is asserted, Q is driven to logic ‘0’, else Q is driven by D. In Verilog code:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1</span>)
+        Q &lt;= <span class="hljs-number">1'b0</span>;
+    <span class="hljs-keyword">else</span>
+        Q &lt;= D;
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 data-source-line="68" id="check-your-verilog-file">Check your Verilog File</h3>
+<p data-source-line="69">So the final Verilog implementation of a D-FF looks as follows:
+<button class="btn btn-sm btn-grey" data-target="#demo1" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo1">
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> dff(
+    <span class="hljs-keyword">input</span> D,
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> Q
+    );
+
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1</span>)
+        Q &lt;= <span class="hljs-number">1'b0</span>;
+    <span class="hljs-keyword">else</span>
+        Q &lt;= D;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h2 data-source-line="94" id="step-2-implement-the-clock-divider-to-blink-an-led">Step 2: Implement the Clock Divider to Blink an LED</h2>
+<p data-source-line="96">The block diagram of the clock divider is shown in Fig. 4. Name the internal wire out of the flip-flop <code>clkdiv</code> and the wire connecting to the input of D-FF din. The frequency of each <code>clkdiv</code> is shown in red.</p>
+<figure data-source-line="98"><img alt="Figure 2. Block diagram of clock divider" src="../images/357c689425813537bcd6cae2201dba72.svg"/><figcaption>Figure 2. Block diagram of clock divider</figcaption></figure>
+<h3 data-source-line="100" id="declare-clock-divider">Declare Clock Divider</h3>
+<p data-source-line="101">In this design, you need two inputs: on-board clock input clk, and a push button as reset signal rst. You have one output to blink an LED, so let’s call it <code>led</code>.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> clk_divider(
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> led
+    );
+</code></pre>
+<h3 data-source-line="110" id="declare-internal-signals">Declare Internal Signals</h3>
+<p data-source-line="111">You need to declare all the internal wires you are going to use.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">wire</span> [<span class="hljs-number">26</span>:<span class="hljs-number">0</span>] din;
+<span class="hljs-keyword">wire</span> [<span class="hljs-number">26</span>:<span class="hljs-number">0</span>] clkdiv;
+</code></pre>
+<h3 data-source-line="118" id="describe-clock-divider-structurally">Describe Clock Divider Structurally</h3>
+<p data-source-line="119">We need to instantiate 27 flip-flops with 27 inverters to divide the clock frequency by <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mn>2</mn><mn>7</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{27}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">2</span><span class="mord mathrm mtight">7</span></span></span></span></span></span></span></span></span></span></span></span></eq> to 0.745Hz. To instantiate the first flip-flop with an inverter, the Verilog code should be as follows:</p>
+<pre><code class="hljs language-verilog">dff dff_inst0 (
+    <span class="hljs-variable">.clk</span>(clk),
+    <span class="hljs-variable">.rst</span>(rst),
+    <span class="hljs-variable">.D</span>(din[<span class="hljs-number">0</span>]),
+    <span class="hljs-variable">.Q</span>(clkdiv[<span class="hljs-number">0</span>])
+);
+</code></pre>
+<p data-source-line="130">For the rest 26 flip-flops, you can copy the code above 26 times and change the names of the internal wire each port will map to. However, we can also use generate statement with a <code>for</code> loop in Verilog to generate the code for us. By observing the block diagram shown above in Fig. 3, starting from the second flip-flop, <code>rst</code> port of D-FF is always connected to signal <code>rst</code>. If the port D is connected to signal <code>din[i]</code>, then clk port is connected to <code>clkdiv[i-1]</code> and Q port is connected to <code>clkdiv[i]</code>. So, we can generate the 26 D-FFs:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">genvar</span> i;
+<span class="hljs-keyword">generate</span>
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">27</span>; i=i+<span class="hljs-number">1</span>)
+<span class="hljs-keyword">begin</span> : dff_gen_label
+    dff dff_inst (
+        <span class="hljs-variable">.clk</span>(clkdiv[i-<span class="hljs-number">1</span>]),
+        <span class="hljs-variable">.rst</span>(rst),
+        <span class="hljs-variable">.D</span>(din[i]),
+        <span class="hljs-variable">.Q</span>(clkdiv[i])
+    );
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">endgenerate</span>;
+</code></pre>
+<p data-source-line="147">We can use the same generate statement to instantiate 27 inverters, or by observing the connections, the bus <code>din</code> is actually the inverse of bus <code>clkdiv</code>. So, instead of writing the generate statement, we can simply write one assign statement as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">assign</span> din = ~clkdiv;
+</code></pre>
+<p data-source-line="152">Connect the output of the flip-flop in the final stage to <code>led</code>.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">assign</span> led = clkdiv[<span class="hljs-number">26</span>];
+
+</code></pre>
+<h3 data-source-line="159" id="check-your-code">Check your Code</h3>
+<p data-source-line="160">Verilog file of the design should be as follows:
+<button class="btn btn-sm btn-grey" data-target="#demo2" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo2">
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> clk_divider(
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> led
+    );
+
+<span class="hljs-keyword">wire</span> [<span class="hljs-number">26</span>:<span class="hljs-number">0</span>] din;
+<span class="hljs-keyword">wire</span> [<span class="hljs-number">26</span>:<span class="hljs-number">0</span>] clkdiv;
+
+dff dff_inst0 (
+    <span class="hljs-variable">.clk</span>(clk),
+    <span class="hljs-variable">.rst</span>(rst),
+    <span class="hljs-variable">.D</span>(din[<span class="hljs-number">0</span>]),
+    <span class="hljs-variable">.Q</span>(clkdiv[<span class="hljs-number">0</span>])
+);
+
+<span class="hljs-keyword">genvar</span> i;
+<span class="hljs-keyword">generate</span>
+<span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">27</span>; i=i+<span class="hljs-number">1</span>)
+<span class="hljs-keyword">begin</span> : dff_gen_label
+    dff dff_inst (
+        <span class="hljs-variable">.clk</span>(clkdiv[i-<span class="hljs-number">1</span>]),
+        <span class="hljs-variable">.rst</span>(rst),
+        <span class="hljs-variable">.D</span>(din[i]),
+        <span class="hljs-variable">.Q</span>(clkdiv[i])
+    );
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">endgenerate</span>;
+
+<span class="hljs-keyword">assign</span> din = ~clkdiv;
+
+<span class="hljs-keyword">assign</span> led = clkdiv[<span class="hljs-number">26</span>];
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h3 data-source-line="204" id="step-3-create-a-simulation-test-bench-and-simulate-the-clock-divider-circuit">Step 3: Create a Simulation Test Bench and Simulate the Clock Divider Circuit</h3>
+<p data-source-line="206">As with the combinational circuit we have designed in previous projects, you can draft a test bench to test the circuit out before implementing it on-chip. However, in this test bench, we need to emulate the clock signal and the rst signal. The clock signal is actually a constantly oscillating signal. Using the Blackboard as an example, the input clock frequency is 100 MHz, i.e., the period of the clock is 10 ns. Half of the period the clock is high, half of the period clock is low. In other words, every half of the period, 5 ns in this case, the clock will flip itself. To simulate the clock signal, instead of putting it in the initialize statement, we will use an always statement.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+
+...
+
+<span class="hljs-keyword">reg</span> clk;
+
+<span class="hljs-keyword">always</span>
+    #<span class="hljs-number">5</span> clk = ~clk;
+</code></pre>
+<p data-source-line="219">In the initialize block, we will initialize <code>clk</code> signal to 0 and hold <code>rst</code> high for 10ns to reset the clock divider. So, the Verilog Test Bench will look like this:
+<button class="btn btn-sm btn-grey" data-target="#demo3" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo3">
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+
+<span class="hljs-keyword">module</span> tb;
+
+    <span class="hljs-comment">// Inputs</span>
+    <span class="hljs-keyword">reg</span> clk;
+    <span class="hljs-keyword">reg</span> rst;
+
+    <span class="hljs-comment">// Outputs</span>
+    <span class="hljs-keyword">wire</span> led;
+
+    <span class="hljs-comment">// Instantiate the Unit Under Test (UUT)</span>
+    clk_divider uut (
+        <span class="hljs-variable">.clk</span>(clk),
+        <span class="hljs-variable">.rst</span>(rst),
+        <span class="hljs-variable">.led</span>(led)
+    );
+
+    <span class="hljs-keyword">always</span>
+        #<span class="hljs-number">5</span> clk = ~clk;
+
+    <span class="hljs-keyword">initial</span> <span class="hljs-keyword">begin</span>
+        <span class="hljs-comment">// Initialize Inputs</span>
+        clk = <span class="hljs-number">0</span>;
+        rst = <span class="hljs-number">1</span>;
+
+        #<span class="hljs-number">10</span> rst = <span class="hljs-number">0</span>;
+
+        <span class="hljs-comment">// Wait 100 ns for global reset to finish</span>
+        #<span class="hljs-number">100</span>;
+
+    <span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h3 data-source-line="261" id="simulating-the-clock-divider">Simulating the Clock Divider</h3>
+<p data-source-line="263">When you first run behavioral simulation, the internal signals such as <code>clkdiv[26:0]</code> won’t appear in the simulation window. You can access these signals by opening windows <mark>Scope</mark> and <mark>Objects</mark> on the left side of the simulation window and clicking on <mark>uut</mark> under <mark>Scope</mark> window. Now you can see <code>clkdiv[26:0]</code> under <mark>Objects</mark> window, go ahead and click and drag this signal to the simulation window under the <mark>Name</mark> column as show in figure 3. You can also drag <code>clkdiv[26:0]</code> signals into the simulation window one by one in any order you want.</p>
+<figure data-source-line="265"><img alt="Figure 3. Accessing Internal Signals" src="../images/eef6a7c200dc00e11533eee3e969f560.png"/><figcaption>Figure 3. Accessing Internal Signals</figcaption></figure>
+<p data-source-line="267">Now you have <code>clkdiv[26:0]</code> in your simulation window, but it doesn’t have any signals. In order to see those signals, you need to relaunch your simulation by clicking <mark>Relaunch Simulation</mark> icon <img alt="" src="../images/72bf6a035482c5e7ce624d2839180aad.png"/> as shown in figure 4. You can also achieve the same result by clicking on <mark>Restart</mark> icon <img alt="" src="../images/a25e6cc6c356606cc908670d8d9214c2.png"/> to restart the simulation and then clicking on <mark>Run All</mark> icon <img alt="" src="../images/c2eae7f66e0f0813b8e9992767d563ed.png"/> to start the simulation again, both of which can be found on the same toolbar as the <mark>Relaunch Simulation</mark> icon.</p>
+<figure data-source-line="269"><img alt="Figure 4. Relaunching Simulation" src="../images/c86d363130775b13ff59d6401c336735.png"/><figcaption>Figure 4. Relaunching Simulation</figcaption></figure>
+<p data-source-line="271">The simulated waveform is shown in Fig. 5 below. You can see in the waveform that <em>clkdiv[0]</em> is half of the frequency of <em>clk</em>, and that <em>clkdiv[1]</em>
+is half of the frequency of <em>clkdiv[2]</em>.</p>
+<figure data-source-line="274"><img alt="Figure 5. Clock Divider Simulation Waveform" src="../images/235c6034e97aaf26ed4410c91adbf59e.png"/><figcaption>Figure 5. Clock Divider Simulation Waveform</figcaption></figure>
+<h2 data-source-line="278" id="requirements">Requirements</h2>
+<h3 data-source-line="279" id="1-simulate-the-clock-divider-circuit"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Simulate the Clock Divider Circuit</h3>
+<p data-source-line="280">Simulate your clock divider circuit as shown in the example project.</p>
+<h3 data-source-line="282" id="2-implement-the-clock-divider-circuit-on-the-blackboard"><i aria-hidden="true" class="fa fa-check-square-o"></i> 2. Implement the Clock Divider Circuit on the Blackboard</h3>
+<p data-source-line="283">Now you can create a XDC file that maps clk to the global clock on board, rst to a push button, and led to an on-board LED. Generate bitstream and launch it on your Blackboard. If your Blackboard is configured at 100 MHz clock, you can see that the LED blinks once every 1.45 seconds.</p>
+<h3 data-source-line="285" id="3-change-frequency-using-two-switches"><i aria-hidden="true" class="fa fa-check-square-o"></i> 3. Change Frequency Using Two Switches</h3>
+<p data-source-line="286">Add two switches to control how fast the LED blinks:</p>
+<ul data-source-line="287">
+<li>If <mark>switch[1:0]</mark> is <code>0</code>, LED blinks at 0.745 Hz frequency;</li>
+<li>If <mark>switch[1:0]</mark> is <code>1</code>, LED blinks at 1.49 Hz frequency;</li>
+<li>If <mark>switch[1:0]</mark> is <code>2</code>, LED blinks at 2.98 Hz frequency; and</li>
+<li>If <mark>switch[1:0]</mark> is <code>3</code>, LED blinks at 5.96 Hz frequency.</li>
+</ul>
+<h2 data-source-line="292" id="next-project-shift-register"><i aria-hidden="true" class="fa fa-sign-out"></i> Next Project: Shift Register</h2>
+<p data-source-line="293">If you are confident in doing this porject, go ahead and continue with the next <a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/a8e6ec6f1d0cf415bd23a0d2d8f4f87f"><strong>PROJECT 5.4: Shift Register</strong></a>!</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

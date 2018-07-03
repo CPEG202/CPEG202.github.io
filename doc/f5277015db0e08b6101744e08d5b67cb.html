@@ -1,0 +1,113 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Introduction to CMOS Technology
+            </h1>
+<h2>Building Blocks of Digital Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                331
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="logic-gates-in-complementary-mosfet-technology">Logic Gates in Complementary MOSFET Technology</h2>
+<p data-source-line="3">Armed with the basic understanding of FET operation as described in previous sections, it is possible to construct a basic logic circuit that forms the back bone of all digital and computer circuits. These logic circuits will combine one or more input signals to produce an output signal according to the logic function requirements. The following discussion is restricted to circuits for basic logic functions (like AND, OR, and INV), but FET circuits can readily be built for more complex logic circuits as well.</p>
+<p data-source-line="5">When building FET circuits to implement logic relationships, four basic rules must be followed:</p>
+<ol data-source-line="7">
+<li>pFET sources must be connected to Vdd and nFET sources must be connected to GND.</li>
+<li>The circuit output must always be connected to Vdd via an on pFET or to GND via an on nFET (i.e., the circuit output must never be left floating).</li>
+<li>The logic circuit output must never be connected to both Vdd and GND at the same time (i.e., the circuit output must not be “shorted”).</li>
+<li>The circuit must use the fewest possible number of FETs.</li>
+</ol>
+<div class="row"><div class="col-md-8"><p>Following these rules, a circuit that can form the AND relationship between two input signals is developed. But first, note that in the circuit on the right in Fig. 1, the output (labeled Y) is connected to GND only if the two inputs A and B are at Vdd. The two nFETs labeled Q1 and Q2 are said to be in series; in general, a series connection of FETs is required for an AND function. In the circuit in Fig. 1 below, the output Y is connected to GND if A or B are at Vdd. The two nFETs labeled Q3 and Q4 are said to be in parallel; in general, a parallel connection of FETs is required for an OR function.</p>
+</div><div class="col-lg-4 col-md-6 col-sm-12"><figure><img alt="Figure 1. nFETs serial and parallel configuration" src="../images/06ff12d8d27d9fe0c1e0db02823d3c65.svg"/><figcaption>Figure 1. nFETs serial and parallel configuration</figcaption></figure>
+</div></div><p data-source-line="21">Keeping in mind the rules for FET logic circuits, an AND structure is created from Q1 and Q2 below. Using just these two FETs, Y is driven to GND whenever A and B are at Vdd. But we must also ensure the output Y is at Vdd when A and B are not both at Vdd; restated, we must ensure the output Y is at Vdd whenever A or B are at GND. This can be accomplished with an OR’ing structure of pFETs (Q3 and Q4 below). The AND’ing structure and OR’ing structure are assembled in the circuit on the right in Fig. 2 below. The adjacent operation table shows the input and output voltages for all four possible combinations of inputs. Note that this circuit obeys all of the rules above—pFETs are connected only to Vdd, nFETs are connected only to ground, the output is always driven to Vdd or to GND but never to both simultaneously, and the fewest possible number of FETs are used.</p>
+<figure data-source-line="23"><img alt="Figure 2. NAND gate configurations and table" src="../images/6ffb88dec20abf90bae0b9540442db9a.svg"/><figcaption>Figure 2. NAND gate configurations and table</figcaption></figure>
+<div class="row"><div class="col-md-8"><p>This AND’ing circuit has the interesting property of producing an output signal at GND when both inputs A and B are at Vdd. In order to have this circuit’s performance match the AND logical truth table above, we must associate an input signal at Vdd with a logic 1 (and therefore, an input signal at GND must be associated with a logic 0); and we must associate an output signal at GND with a logic ‘1’. This creates a potentially confusing situation—considering the ‘1’ symbol to represent a signal at Vdd on the input of a gate, and then considering that same ‘1’ symbol to represent a signal at GND on the output of a gate. Note that if the outputs in the Y column of the truth table were inverted (that is, if Vdd were changed to GND and GND were changed to Vdd), then a ‘1’ symbol could represent Vdd for both the inputs and outputs, resulting in the AND truth table presented earlier. Because of this, the circuit shown above is called a NOT AND gate (were NOT means inversion), which is shortened to “NAND” gate. To create an AND circuit in which both the input signals and output signals can associate a Vdd signal with a logic ‘1’, an inverter circuit must be added to the output of the NAND gate (as the name implies, an inverter produces a Vdd output for a GND input, and vice-versa). An NAND gate produces a GND output only when all the inputs are Vdd.</p>
+</div><div class="col-lg-4 col-md-6 col-sm-12"><figure><img alt="Figure 3. Generic CMOS Topology" src="../images/65224d76a53350b3ef50a6343d6b61a2.svg"/><figcaption>Figure 3. Generic CMOS Topology</figcaption></figure>
+</div></div><p data-source-line="34">Shown in Fig. 4 below are the five basic logic circuits: NAND, NOR (for NOT OR), AND, OR and INV (for inverter). The reader should verify that all truth tables show the correct circuit operation. These basic logic circuits are frequently referred to as logic gates.</p>
+<figure data-source-line="36"><img alt="Figure 4. Basic CMOS Gates and Their Truth Tables" src="../images/d4b3b46b782b2c7715ee103e46a2c6d2.svg"/><figcaption>Figure 4. Basic CMOS Gates and Their Truth Tables</figcaption></figure>
+<p data-source-line="38">In each of these logic gates, a minimum number of FETs has been used to produce the required logic function. Each circuit has nFETs “on the bottom” and pFETs “on the top” performing complementary operations; that is, when an OR relationship is present in the nFETs, an AND relationship is present in the pFETs. FET circuits that exhibit this complementary nature are called Complementary Metal Oxide Semiconductor, or CMOS circuits. CMOS circuits are by far the dominant circuits used today in digital and computer circuits. (Incidentally, the Metal-Oxide-Semiconductor name refers to older technologies where the gate material was made of metal and the insulator beneath the gate made of silicon oxide). These basic logic circuits form the basis for all digital and computer circuits.</p>
+<p data-source-line="40">When these circuits are used in schematic drawings, the well-known symbols shown below in Fig. 5 are used rather than the FET circuit diagrams (it would simply be too tedious to draw the FET circuits). A straight edge on the input side of a symbol and smoothly curved output side means AND, while a curved edge on the input side and pointed output side means OR. A bubble on an input means that input must be at LLV to produce the indicated logic function output, and a bubble on the output means that a LLV output signal is produced as a result of the logic function. The lack of a bubble on inputs means that signals must be at LHV to produce the indicated function, and the lack of a bubble on the output means that a LHV signal is produced as a result of the logic function.</p>
+<figure data-source-line="42"><img alt="Figure 5. Logic Gate Symbols" src="../images/460216c6ebd5b6545e328e466a72325e.svg"/><figcaption>Figure 5. Logic Gate Symbols</figcaption></figure>
+<p data-source-line="44">Note that each of the symbols above has two appearances. The symbols on the top may be considered the primary symbols, and those on the bottom may be considered the conjugate symbols (properly, each symbol is the conjugate of the other). Conjugate symbols swap AND and OR shapes, and input and output assertion levels. The reader should verify that both symbols are appropriate for the underlying CMOS circuit. For example, the AND shaped symbol for the NAND circuit shows that if two inputs A and B are at LVH, then the output is at LLV. The OR shaped symbol for the NAND circuit shows that if either of the two inputs A and B are at LLV, then the output is at LHV. Both statements are true, illustrating that any logic gate can be thought of in conjugate forms. (Why conjugate forms? In certain settings, it can be easier for humans to follow circuit schematics if the appropriate symbol is used—more on this later).</p>
+<h2 data-source-line="46" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="47">
+<li>FET logic circuits will combine one or more input signals to produce an output signal according to the logic function requirements. Although we confined the FET logic circuits to the AND, OR, and NOT functions, they can easily be applied to more complex circuits.</li>
+<li>The five basic logic circuits are frequently referred to as logic gates.</li>
+<li>In each of these logic gates, a minimum number of FETs has been used to produce the required logic function. Each circuit has nFETs “on the bottom” and pFETs “on the top” performing complementary operations; that is, when an OR relationship is present in the nFETs, an AND relationship is present in the pFETs. FET circuits that exhibit this complementary nature are called Complementary Metal Oxide Semiconductor (CMOS) circuits.</li>
+<li>When these circuits are used in schematic drawings, the well-known symbols are used rather than the FET circuit diagrams (it would simply be too tedious to draw the FET circuits). A straight edge on the input side of a symbol and smoothly curved output side means AND, while a curved edge on the input side and pointed output side means OR.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Basic Logic Functions and Truth Tables
+            </h1>
+<h2>Introduction to Digital Logic Fundamentals</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                326
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="basic-logic-function">Basic Logic Function</h2>
+<p data-source-line="2">A digital circuit represents and manipulates information encoded as electric signals that can assume one of two voltages: logic high (Vdd) or logic low (GND). Here we will dig further into the workings of digital circuits now that you have a better foundation for understanding.</p>
+<p data-source-line="4">A digital circuit requires a power supply that can produce these two voltages, and these same supply voltages are also used to encode information in the form of two-state, or binary signals. Thus, if a given circuit node is at Vdd, then that signal is said to carry a logic ‘1’; if the node is at GND, then the node carries a logic ‘0’. The components in digital circuits are simple on/off switches that can pass logic ‘1’ and logic ‘0’ signals from one circuit node to another. Most typically, these switches are arranged to combine input signals to produce an output signal according to basic logic relationships. For example, one well-known logic circuit is an AND gate that combines two input signals to produce an output that is the logic AND of the inputs (i.e., if both input1 and input2 are a ‘1’, then the output is a ‘1’).</p>
+<p data-source-line="6">The three primary logic relationships,<em>AND</em>, <em>OR</em>, and <em>NOT</em> (or inversion) can be used to express any logical relationship between any number of variables. These simple logic functions form the basis for all digital electronic devices—from a simple microwave oven controller to a desktop PC. We can write a collection of logic equations of the form <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq> (F equals A and B) that use these three relationships to specify the behavior of any given digital system. Pause a moment and think about this: any digital system, up to and including a highly complex computer system, can be built entirely of devices that do no more than implement these three simple functions. Figure 1 below illustrates logic function notations.</p>
+<div class="row"><div class="col-md-6"><p>As engineers, we must address two primary concerns: how to express a given requirement or problem statement in terms of these simple logic relationships; and how to build electronic devices (or circuits) that can be used to implement these relationships in real devices.</p>
+<p>Logic equations provide an abstract model of actual logic circuits. They are used to show how an output logic signal should be driven in response to changes on one or more input signals. The equal sign (’=’) is typically used as an assignment operator to indicate how information should flow through a logic circuit. For example, the simple logic equation ‘F = A’ specifies that the output signal F should be assigned whatever voltage is currently on signal A. But this does not necessarily imply that F and A are the same circuit node—in fact most of the time, the use of a logic equation to specify circuit behavior implies that the inputs and outputs are separated by a circuit component.</p>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><figure><img alt="Figure 1. Logic function notations." src="../images/4f18d348f280f0df24089ad330a323d5.png"/><figcaption>Figure 1. Logic function notations.</figcaption></figure>
+</div></div><p data-source-line="18">In digital circuits, circuit components act like one-way gates. Thus, the logic equation ‘F = A’ dictates that a change on the signal A will result in a change on the signal F, but a change on F will not result in a change on A. Because of this directionality, assignment operators that indicate direction, such as ‘F = A’, are often used.</p>
+<p data-source-line="20">Most logic equations specify an output signal that is some function of input signals. For example, the logic equation <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq> specifies a logic circuit whose output will be driven to a ‘1’ only when both inputs are driven to a ‘1’. In Fig. 2 below are six common logical functions written as conventional logic equations. The AND relationship, <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq>, can be written without an operator between the A and B (but more properly, a dot (⋅⋅) should be placed between the variables to make the relationship clear). The OR relationship uses the plus sign, and the NOT or inversion relationship is shown by placing a bar over the inverted variable or by placing a single quote character after the variable or quantity to be inverted (two possible notations are shown for several relationships).</p>
+<figure data-source-line="22"><img alt="Figure 2. Logic equations" src="../images/d26d42ed2645f4823199826e667ca0c5.svg"/><figcaption>Figure 2. Logic equations</figcaption></figure>
+<p data-source-line="24">Compound logic expressions can be built from these basic functions. For example, an output might be need to be driven to a ‘1’ if input signals A and B are both at ‘1’ , or if input C is ‘0’, or if C is ‘1’ at the same time that A is ‘0’. This relationship can be concisely written as</p>
+<p data-source-line="26"><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi><mo>+</mo><mover accent="true"><mrow><mi>C</mi></mrow><mo>¯</mo></mover><mo>+</mo><mover accent="true"><mrow><mi>A</mi></mrow><mo>¯</mo></mover><mo>⋅</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">F = A \cdot B + \bar{C} + \bar{A} \cdot C</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8201099999999999em;"></span><span class="strut bottom" style="height:0.9034399999999999em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mbin">+</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span></span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="margin-left:0.16668em;"><span>¯</span></span></span></span></span></span></span><span class="mbin">+</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathit">A</span></span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="margin-left:0.27778em;"><span>¯</span></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.07153em;">C</span></span></span></span></eq>.</p>
+<h2 data-source-line="28" id="truth-tables">Truth Tables</h2>
+<p data-source-line="29">A truth table is the primary tool for capturing logical relationships in a concise and universally understood format. All possible combinations of inputs are shown in rows on the left of a truth table, and outputs are shown on the right. A truth table with N inputs requires <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">2^N</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span></eq> rows to list all possible input combinations. A ‘0’ or ‘1’ in an output column of a given row specifies the behavior of the logic relationship for the combination of inputs shown in the adjacent row. For example, a truth table with two inputs, A and B, will require <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2^2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></eq>, or 4 rows to list all possible combinations: ‘0 0’, ‘0 1’, ‘1 0’, and ‘1 1’. For the ANDing operation, the output is “true” only when both inputs are true, so the rightmost column would have a ‘1’ only in the last row. For the ORing operation, the truth table would have a ‘0’ only in the first row.</p>
+<figure data-source-line="31"><img alt="Figure 3. Truth Tables and Logic Functions for AND and OR Equations" src="../images/48d193e7ea0d93ceb5e71027b70c7f21.svg"/><figcaption>Figure 3. Truth Tables and Logic Functions for AND and OR Equations</figcaption></figure>
+<p data-source-line="33">In engineering, our goal is to produce electric circuits that can implement the behavior specified for any given logic relationship. For example, a design might require a warning light to be illuminated whenever sensor A outputs a logic ‘1’, but only if sensor B also outputs a logic ‘1’ at the same time. In this example, perhaps the warning light is in an automobile dashboard, sensor A is a thermometer that outputs a ‘1’ if the temperature is above 90C, and sensor B outputs a ‘1’ if the coolant level is too low. If the coolant level ever becomes too low while the engine temperature too high, the circuit should “assert” its output, in order to do some work (like illuminating the warning light). We apply the same term to inputs—the AND relationship in this example may be stated as “the output F is asserted when the inputs A and B are both asserted”.</p>
+<p data-source-line="35">Some input signals to logic circuits might normally be a ‘0’, changing to ‘1’ only when some input device or circuit is activated (like the push buttons on the Basys™ board). Other input signals might normally be at ‘1’, changing to ‘0’ only when an input device is activated. In either case, we can use the term “asserted” to indicate the input is producing a signal at either LLV or LHV in response to some action. Using this definition, an asserted signal at LHV is said to be asserted high, and an asserted signal at LLV is said to be asserted low. An asserted high signal at LLV is said to be “not asserted”, and an asserted low signal at LHV is said to be “not asserted”. The same signal definitions are also applied to output signals from logic circuits. If a logic circuit produces a LHV when its inputs are asserted, its output is said to be asserted high, and if a circuit produces a LLV at its output, the output is said to be asserted low.</p>
+<h2 data-source-line="37" id="represent-basic-logic-operations-in-circuits">Represent Basic Logic Operations in Circuits</h2>
+<div class="row"><div class="col-md-8"><p>An example of a circuit that can implement the operation <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq> is shown in the diagram in Fig. 4. When the switches are both closed, the output F is connected directly to GND, and so F it is at LLV. But when one switch or the other is left open, no direct path to GND exists and the output is “pulled high” (to LHV, or VDD, or logic ‘1’) by the resistor. The operation of the circuit is concisely described as follows:</p>
+<ul>
+<li>If both switches are open, then F = VDD (or LHV);</li>
+<li>If one switch is open and the other closed, then F = VDD (or LHV);</li>
+<li>If both switches are closed, then F = GND (or LLV);</li>
+</ul>
+</div><div class="col-lg-4 col-md-6 col-sm-12"><figure><img alt="Figure 4. Series Circuit" src="../images/f743c8cf07e53ec418e3b4851106b071.svg"/><figcaption>Figure 4. Series Circuit</figcaption></figure>
+</div></div><p data-source-line="51">If we assume that placing VDD (or logic ‘1’) on a switch’s input causes it to close, and placing GND (or logic ‘0’) on a switch causes it to open, then we can complete a truth table that clearly shows the behavior of the circuit network under all conditions.</p>
+<p data-source-line="53">The series circuit can show both the AND relationship and the OR relationship: F is LLV if SW1 and SW2 are closed; and F is LHV (or VDD) if SW1 or SW2 are open. All logic circuits illustrate this property of duality, which simply means that any given logic circuit can be interpreted as performing and AND’ing relationship or an OR’ing relationship, depending on how the inputs and outputs are interpreted.</p>
+<div class="row"><div class="col-md-8"><p>A parallel circuit can also be used to implement the function or <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A+B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq>. This circuit uses a parallel configuration instead of the series configuration shown in the above figure. Here again, we assume that Vdd closes a switch and 0V opens a switch. This circuit, like that of the figure above, can demonstrate either the AND relationship or the OR relationship depending on how the input and output signals are interpreted—F is LLV (or GND) if SW1 and SW2 are open, and F is LHV if SW1 or SW2 are closed.</p>
+</div><div class="col-lg-4 col-md-6 col-sm-12"><figure><img alt="Figure 5. Parallel Circuit" src="../images/27219941260270844f8abe01a1712cff.svg"/><figcaption>Figure 5. Parallel Circuit</figcaption></figure>
+</div></div><p data-source-line="65">Note that in both cases in Fig. 5 above, the physical circuit always behaves the same way, but the behavior can be interpreted as OR-like, or as AND-like. As will be seen in later work, which interpretation is used is a matter of convenience.</p>
+<h2 data-source-line="67" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="68">
+<li>The components in digital circuits are simple on/off switches that can pass logic ‘1’ and logic ‘0’ signals from one circuit node to another.</li>
+<li>The three primary logic relationships, AND, OR, and NOT (or inversion) can be used to express any logical relationship between any number of variables. These simple logic functions form the basis for all digital electronic devices—from a simple microwave oven controller to a desktop PC.</li>
+<li>A truth table is the primary tool for capturing logical relationships in a concise and universally understood format. All possible combinations of inputs are shown in rows on the left of a truth table, and outputs are shown on the right.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Arithmetic Logic Units (ALU)
+            </h1>
+<h2>Arithmetic Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                265
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="arithmetic-and-logic-units">Arithmetic and Logic Units</h2>
+<div class="row"><div class="col-md-9"><p>Arithmetic and Logic Units (or ALUs) are found at the core of microprocessors, where they implement the arithmetic and logic functions offered by the processor (e.g., addition, subtraction, AND’ing two values, etc.). An ALU is a combinational circuit that combines many common logic circuits in one block. Typically, ALU inputs are comprised of two N-bit busses, a carry-in, and M select lines that select between the <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>M</mi></msup></mrow><annotation encoding="application/x-tex">2^M</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">M</span></span></span></span></span></span></span></span></span></span></span></eq> ALU operations. ALU outputs include an N-bit bus for function output and a carry out.</p>
+</div><div class="col-lg-3"><figure><img alt="Figure 1. Arithmetic and logic units" src="../images/949f1bb30ce6bd4ebbce0d5de6388766.svg"/><figcaption>Figure 1. Arithmetic and logic units</figcaption></figure>
+</div></div><p data-source-line="12">ALUs can be designed to perform a variety of different arithmetic and logic functions. Possible arithmetic functions include addition, subtraction, multiplication, comparison, increment, decrement, shift, and rotate; possible logic functions include AND, OR, XOR, XNOR, INV, CLR (for clear), and PASS (for passing a value unchanged). All of these functions find use in computing systems, although a complete description of their use is beyond the scope of this document. An ALU could be designed to include all of these functions, or a subset could be chosen to meet the specific needs of a given application. Either way, the design process is similar (but simpler for an ALU with fewer functions).</p>
+<p data-source-line="14">As an example, we will consider the design of an ALU that can perform one of eight functions on 8-bit data values. This design, although relatively simple, is not unlike many of ALUs that have been designed over the years for all sizes and performance ranges of processors. Our ALU will feature two 8-bit data inputs, an 8-bit data output, a carry-in and a carry out, and three function select inputs (S2, S1, S0) providing selection between eight operations (three arithmetic, four logic, and a clear or ‘0’).</p>
+<p data-source-line="16">Targeted ALU operations are shown in the operation table below. The three control bits used to select the ALU operation are called the “operation code” (or op code), because if this ALU were used in an actual microprocessor, these bits would come from the “opcodes” (or machine codes) that form the actual low-level computer programming code. (Computer software today is typically written in a high-level language like ‘C’, which is compiled into assembler code. Assembler code can be directly translated into machine codes that cause the microprocessor to perform particular functions).</p>
+<table class="table table-striped table-bordered" data-source-line="18">
+<thead>
+<tr>
+<th><strong>OpCode</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Function</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>Addition</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F= A + B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>001</td>
+<td>Increment</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">F=A + 1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>010</td>
+<td>Subtract</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>−</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A - B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>011</td>
+<td>No Operation</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">F=0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>100</td>
+<td>Bit-wise XOR</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \oplus B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>101</td>
+<td>Bit-wise Inversion</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mover accent="true"><mi>A</mi><mo>¯</mo></mover></mrow><annotation encoding="application/x-tex">F = \bar A</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8201099999999999em;"></span><span class="strut bottom" style="height:0.8201099999999999em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="margin-left:0.27778em;"><span>¯</span></span></span></span></span></span></span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>110</td>
+<td>Bit-wise OR</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mi mathvariant="normal">∣</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \vert B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>111</td>
+<td>Bit-wise AND</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>&amp;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F=A \And B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mbin">&amp;</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+</tbody>
+</table>
+<div class="row"><div class="col-md-8"><p>Since ALUs operate on binary numbers, the bit-slice design method is indicated. ALU design should follow the same process as other bit- slice designs: first, define and understand all inputs and outputs of a bit slice (i.e., prepare a detailed block diagram of the bit slice); second, capture the required logical relationships in some formal method (e.g., a truth table); third, find minimal circuits (by using K-maps or espresso) or write VHDL code; and fourth, proceed with circuit design and verification.</p>
+</div><div class="col-lg-4"><figure><img alt="Figure 2. ALU bit-sliced block." src="../images/d6a78d60c42a15dc349f137523ad60b9.svg"/><figcaption>Figure 2. ALU bit-sliced block.</figcaption></figure>
+</div></div><p data-source-line="39">A block diagram and operation table for our ALU example is shown above. Note in the operation table, entered variables are used to define the functional requirements for the two outputs (F and Cout) of the bit-slice module. If entered variables were not used, the table would have required 64 rows. Since Cout is not required for logic functions, it can be assigned ‘0’ or a don’t care for those rows. A circuit diagram for an 8-bit ALU based on the developed bit slice is shown in Fig. 3.</p>
+<table class="table table-striped table-bordered" data-source-line="41">
+<thead>
+<tr>
+<th><strong>OpCode</strong></th>
+<th><strong>Description</strong></th>
+<th><strong><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C\_{out}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span></eq></strong></th>
+<th><strong><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span></span></span></span></eq></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>Addition</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>⋅</mo><mi>B</mi><mo>+</mo><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>⋅</mo><mo>(</mo><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">A \cdot B + C\_{in} \cdot (A \oplus B)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mbin">+</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">⋅</span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>⊕</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">C\_{in} \oplus A \oplus B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">⊕</span><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>001</td>
+<td>Increment</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>⋅</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">C\_{in} \cdot A</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">⋅</span><span class="mord mathit">A</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>⊕</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">C\_{in} \oplus A</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">⊕</span><span class="mord mathit">A</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>010</td>
+<td>Subtract</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mo>(</mo><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>)</mo></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>+</mo><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\overline{(A \oplus B)} \cdot C\_{in} + \overline A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.9500000000000001em;"></span><span class="strut bottom" style="height:1.2000000000000002em;vertical-align:-0.25em;"></span><span class="base"><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9500000000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span><span style="top:-3.87em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"></span></span></span></span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">+</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>⊕</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">C\_{in} \oplus A \oplus B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mbin">⊕</span><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>011</td>
+<td>No Operation</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>100</td>
+<td>Bit-wise XOR</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \oplus B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>101</td>
+<td>Bit-wise Inversion</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline A</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8833300000000001em;"></span><span class="strut bottom" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="base"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>110</td>
+<td>Bit-wise OR</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A + B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+<tr>
+<td>111</td>
+<td>Bit-wise AND</td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">0</span></span></span></span></eq></td>
+<td><eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq></td>
+</tr>
+</tbody>
+</table>
+<figure data-source-line="53"><img alt="Figure 3. Block diagram of ALU composed of bit-sliced blocks." src="../images/83ee884a44ce2768b7ec90915469d603.svg"/><figcaption>Figure 3. Block diagram of ALU composed of bit-sliced blocks.</figcaption></figure>
+<p data-source-line="55">Once the ALU operation table is complete, a circuit can be designed following any one of several methods: K-maps can be constructed and minimal circuits can be looped; muxes can be used (with an 8:1 mux for F and a 4:1 mux for Cout); the information could be entered into a computer-based minimizer and the resulting equations implemented directly; or we could bypass all the difficult and error-prone structural work and create a behavioral description using Hardware Description Language (such as Verilog or VHDL).</p>
+<h2 data-source-line="57" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="59">
+<li>An ALU is a combinational circuit that combines many common logic circuits in one block. Typically, ALU inputs are comprised of two N-bit busses, a carry-in, and M select lines that select between the <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>M</mi></msup></mrow><annotation encoding="application/x-tex">2^M</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">M</span></span></span></span></span></span></span></span></span></span></span></eq> ALU operations.</li>
+<li>Targeted ALU operations are shown in the operation table. The three control bits used to select the ALU operation are called the “operation code” (or op code), because if this ALU were used in an actual microprocessor, these bits would come from the “opcodes” (or machine codes) that form the actual low-level computer programming code.</li>
+<li>ALU design should follow the same process as other bit-slice designs: first, define and understand all inputs and outputs of a bit slice (i.e., prepare a detailed block diagram of the bit slice); second, capture the required logical relationships in some formal method (e.g., a truth table); third, find minimal circuits (by using K-maps or espresso) or write VHDL code; and fourth, proceed with circuit design and verification.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

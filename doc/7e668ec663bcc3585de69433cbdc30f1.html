@@ -1,0 +1,109 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Transistors ad Switches
+            </h1>
+<h2>Building Blocks of Digital Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                308
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction-to-transistors">Introduction to Transistors</h2>
+<p data-source-line="3">Digital electronic circuits are built from electronic switches that are called transistors instead of the mechanical switches and resistors as discussed in the previous sections. The basic concept is the same—the switches (transistors) are arranged so that they can be turned on or off by signals carrying either LLV or LHV. The transistor switches used in modern digital circuits are called “Metal Oxide Semiconductor Field Effect Transistors”, or MOSFETs(or just FETs). FETs are three terminal devices that can conduct current between two terminals (the source and the drain) when a third terminal (the gate) is driven by an appropriate logic signal. In the simplest FET model (which is appropriate for our use here), the electrical resistance between the source and the drain is a function of the gate-to-source voltage—the higher the gate voltage, the lower the resistance (and therefore, the more current that can flow). In analog circuits (like audio amplifiers), the gate-to-source voltage is allowed to assume any voltage between GND and Vdd; but in digital circuits, the gate-to-source voltage is constrained to be either Vdd or GND (of course, when the gate voltage changes from Vdd to GND or vice-versa, it must necessary assume voltages between Vdd and GND —we assume that this happens infinitely fast, so that we can ignore FET characteristics during the time the gate voltage is switching).</p>
+<p data-source-line="5">In a simple digital model, FETs can be thought of as electrically controllable “on/off” switches. An electrical connection is created between the source and the drain (i.e., the FET is turned “on”) when the gate input is asserted. One kind of FET, called an nFET, is turned on when Vdd is present at the control input, and a second type, called a pFET, is turned on when GND is present at the control input. Thus, an “asserted” input for an nFET means that the control signal is at Vdd, and for a pFET means the control input is at a GND. Figure 1 below shows the circuit symbols and equivalent switch diagrams for both nFETs and pFETs.</p>
+<figure data-source-line="7"><img alt="Figure 1. Transistors as switches" src="../images/490a8b2930059f0d2217aafe271f5ab5.svg"/><figcaption>Figure 1. Transistors as switches</figcaption></figure>
+<p data-source-line="9">Individual FETs are often used as stand-alone electrically controllable on-off switches. As an example, an nFET can be used to turn on and off an appliance if a power source is connected to the source and the load (such as a motor, lamp, or other electrical component in an appliance) is connected to the drain. A signal applied to the gate could then turn the load device on (gate = GND) or off (gate = Vdd). Typically, a relatively small voltage (on the order of a few volts) is required to turn on a FET, even if the FET is switching large voltages and currents. Individual FETs used for this purpose are typically rather large (macroscopic) devices.</p>
+<p data-source-line="11">FETs can also be arranged into circuits that perform useful logic functions such as AND, OR, NOT, etc. In this application, several very small FETs are constructed on a single small piece of silicon (or chip of silicon) and then interconnected with equally small metal wires. These microscopic FETs typically occupy an area of less than <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>⋅</mo><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>7</mn></mrow></msup><msup><mi>m</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">1 \cdot 10^{-7} m^2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base"><span class="mord mathrm">1</span><span class="mbin">⋅</span><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">7</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathit">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></eq>. Since a silicon chip might measure several millimeters on a side, several millions of FETs can be constructed on a single chip. Circuits assembled in this fashion are said to form “integrated circuits” (or IC’s), because all circuit components are constructed and integrated on the same piece of silicon.</p>
+<h2 data-source-line="13" id="how-fets-are-manufactured">How FETs are Manufactured</h2>
+<p data-source-line="15">Most FETs are manufactured using the semi-conductor silicon. During manufacturing, a silicon chip is implanted with ions to make it more conductive in the areas that will become the FET source and the drain regions—these regions are commonly called diffusion regions. Next, a thin insulating layer is created between these diffusion regions, and another conductor is “grown” on top of this insulator.</p>
+<p data-source-line="17">This grown conductor (typically silicon) forms the gate, and the area immediately under the gate and between the diffusion regions is called the channel. Finally, wires are connected to the source, drain, and gate structures so that the FET can be connected in a larger circuit. Several processing steps involving high temperatures, precise machine alignments, and various materials are required to produce transistors. Although a description of these processes is beyond the scope of this document, the processes are well documented and many references exist. Figures 2 and 3 illustrate the FET manufacturing process.</p>
+<figure data-source-line="19"><img alt="Figure 2. FET Manufacturing Process" src="../images/a4d73002bbd81077128ab4f5b509d853.svg"/><figcaption>Figure 2. FET Manufacturing Process</figcaption></figure>
+<figure data-source-line="21"><img alt="Figure 3. Cross-Section View of nFETs and pFETs." src="../images/d621f7309bce3dac81d37bd223f3eaf0.svg"/><figcaption>Figure 3. Cross-Section View of nFETs and pFETs.</figcaption></figure>
+<h2 data-source-line="23" id="how-fets-operate">How FETs Operate</h2>
+<p data-source-line="25">The basic principles of FET operation are actually quite straightforward. The following basic discussion applies only to nFETs; pFET operation is entirely similar, but the voltages must be reversed. Refer to one of the many available texts for a more proper and detailed presentation of FET operation.</p>
+<p data-source-line="27">As Fig. 4 below shows, both the source and drain diffusion areas of an nFET are implanted with negatively charged particles. When an nFET is used in a logic circuit, its source lead is connected to GND so that the nFET source, like the GND node, has an abundance of negatively charged particles. If the gate voltage of an nFET is at the same voltage as the source lead (i.e., GND), then the presence of the negatively charged particles on the gate repels negatively charged particles from the channel region immediately under the gate (note that in semiconductors such as silicon, positive and negative charges are mobile and can move about the semiconductor lattice under the influence of charged-particle induced electric fields). A net positive charge accumulates under the gate, and two back-to-back positive-negative junctions of charge (called pn junctions) are formed. These pn-junctions prevent current flow in either direction. If the voltage on the gate is raised above the source voltage by an amount exceeding the threshold voltage (or Vth, which equals about 0.5V), positive charges begin to accumulate on the gate and positive charges in the channel region immediately under the gate are repelled. A net negative charge accumulates under the gate, forming a channel of continuous conductive region in the area under the gate and between the source and drain diffusion areas. When the gate voltage reaches Vdd, a large conductive channel forms and the nFET is “strongly” on.</p>
+<figure data-source-line="29"><img alt="Figure 4. nFET On and Off Diagram" src="../images/15b3a74a31333a68fd523fc1c4709b4b.svg"/><figcaption>Figure 4. nFET On and Off Diagram</figcaption></figure>
+<p data-source-line="31">As Fig. 5 shows, nFETs used in logic circuits have their source leads attached to GND and Vdd on their gate turns them on, while pFETs have their source leads attached to Vdd and GND on their gate turns them on.</p>
+<figure data-source-line="33"><img alt="Figure 5. FET schematic diagram" src="../images/5f7a5d3f19eb62c3ffe6715dc78cf4e2.svg"/><figcaption>Figure 5. FET schematic diagram</figcaption></figure>
+<p data-source-line="35">For reasons that will become clear later, an nFET with its source attached to Vdd will not turn on very strongly, so nFET sources are rarely connected to Vdd. Similarly, a pFET with its source attached to GND will not turn on very well either, so pFETs are rarely connected to GND.</p>
+<h2 data-source-line="37" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="39">
+<li>The transistor switches used in modern digital circuits are called “Metal Oxide Semiconductor Field Effect Transistors”, or MOSFETs (or just FETs).</li>
+<li>In the simplest FET model (which is appropriate for our use here), the electrical resistance between the source and the drain is a function of the gate-to-source voltage—the higher the gate voltage, the lower the resistance (and therefore, the more current that can flow).</li>
+<li>FETs can also be arranged into circuits that perform useful logic functions such as AND, OR, NOT, etc. In this application, several very small FETs are constructed on a single small piece of silicon (or chip of silicon) and then interconnected with equally small metal wires.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

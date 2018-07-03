@@ -1,0 +1,303 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    4.1
+                                            Multiplexer, Decoder, Encoder, and Shifter
+            </h1>
+<h2>Basic Combinational Blocks</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                971
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="3">In this project you will design a multiplexer, a decoder, an encoder, and a shifter using Verilog HDL. Instead of building the circuit using logic operators, you will learn to describe a circuit behaviorally according to the functionality you wish the circuit to perform.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Be able to write combinational logic using logic operators in Verilog and implement them on an FPGA;</li>
+<li>Get familiar with <a class="btn btn-sm btn-primary" href="https://www.realdigital.org/doc/467498beab847d9c7668cb472212960d "><strong>General Project Submission Policy</strong></a>;</li>
+<li>Download <em>Combinational Logic: Basic Cells</em> module’s:
+<ul>
+<li><a class="btn btn-sm btn-orange" href="/downloads/6b66f2b34ae16e36121da550ad98679c.pdf"><strong>Submission Form 4</strong></a> <a class="btn btn-sm btn-orange" href="/downloads/ec70cfeb429bcb62be4be6da9112a37b.pdf	"><strong>Problem Set 4</strong></a></li>
+</ul>
+</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Be able to implement combinational logic behaviorally using Verilog HDL;</li>
+<li>Understand the functionality for basic combinational logic cells.</li>
+</ul>
+</div></div><h2 data-source-line="21" id="background">Background</h2>
+<div class="row"><div class="col-md-7"><p>Before starting with the design process, it is important to understand some background information about Multiplexers, Decoders, Encoders, and Shifters. Within the right column, you’ll find series of background topics that will be very beneficial for you to read through before continuing with this project.</p>
+</div><div class="col-lg-5 col-md-6 col-sm-12"><ul>
+<li><a class="btn btn-sm btn-success" href="/doc/dacc40ac1ae11d10eb7304a317749403"><strong>Multiplexers</strong></a></li>
+<li><a class="btn btn-sm btn-success" href="/doc/d4ffc6bac6d8e1e17babba2fe3e88e30"><strong>Binary Decoders</strong></a></li>
+<li><a class="btn btn-sm btn-success" href="/doc/685bdd9e1dc7425ccf4ae8c026341362"><strong>Priority Encoders</strong></a></li>
+<li><a class="btn btn-sm btn-success" href="/doc/03b40755f6d0504aa502945bce1ff2ca"><strong>Shifters</strong></a></li>
+</ul>
+</div></div><h2 data-source-line="34" id="step-1-create-a-new-project">Step 1: Create a New Project</h2>
+<p data-source-line="35">Create a project in Xilinx Vivado targeting the <strong>Blackboard</strong>, as you have done in previous projects.</p>
+<h2 data-source-line="37" id="step-2-design-a-multiplexer">Step 2: Design a Multiplexer</h2>
+<p data-source-line="38">This project starts with designing a 4-1 2-bit bus multiplexer. Eight on-board slide switches will be used to provide the data inputs, two push buttons will be used as select signals, and LEDs 0 and 1 will be used to show the output of the multiplexer. Instead of implementing the multiplexer using logic operators, you are going to describe the circuit behaviorally using an <code>always</code> block and an <code>if-else</code> statement, or a <code>case</code> statement.</p>
+<h3 data-source-line="40" id="declare-a-4-to-1-2-bit-bus-multiplexer">Declare a 4-to-1 2-bit Bus Multiplexer</h3>
+<p data-source-line="41">Create a Verilog module called <code>mux_4_1</code> with inputs <code>I0</code>, <code>I1</code>, <code>I2</code>, <code>I3</code>, <code>Sel</code>, and output <code>Y</code> as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> mux_4_1 (
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] I0,
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] I1,
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] I2,
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] I3,
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Sel,
+    <span class="hljs-keyword">output</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Y
+);
+</code></pre>
+<h3 data-source-line="53" id="description-of-multiplexer-in-verilog-hdl">Description of Multiplexer in Verilog HDL</h3>
+<p data-source-line="54">There are multiple ways to describe the logic of a multiplexer in Verilog.
+You are presented <strong>three ways</strong> to code the multiplexer behaviorally with Verilog HDL. However, you only need one in your code. You are encouraged to try out all three of the different ways to understand and experience the difference in Verilog syntax.</p>
+<h4 data-source-line="56" id="1-using-selection-operator">1. Using <code>?:</code> Selection Operator</h4>
+<p data-source-line="57">The first way to code a mux behaviorally is to use the <code>?:</code> selection operator. This method is most analogous to the if statement. You can think of this statement as follows, assign Y to I0 if the statement in the parenthesis is true, else do what is after the colon.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">assign</span> Y = (Sel == <span class="hljs-number">2'd0</span>) ? I0 : (
+                (Sel == <span class="hljs-number">2'd1</span>) ? I1 : (
+                    (Sel == <span class="hljs-number">2'd2</span>) ? I2 : I3
+                )
+            );
+</code></pre>
+<h4 data-source-line="66" id="2-using-an-always-block-with-an-if-statement">2. Using an <code>always</code> Block With an <code>if</code> Statement</h4>
+<p data-source-line="67">The second way to code a mux is by using an <code>always</code> block together with an <code>if-else</code> statement. However, as <code>Y</code> is assigned in an always block, it needs to be declared as register type <code>reg</code>. You <strong>cannot</strong> have any <code>assign</code> statements within an <code>always block</code>.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Y;
+
+<span class="hljs-keyword">always</span> @ (Sel, I0, I1, I2, I3)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (Sel == <span class="hljs-number">2'd0</span>)
+        Y = I0;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Sel == <span class="hljs-number">2'd1</span>)
+        Y = I1;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Sel == <span class="hljs-number">2'd2</span>)
+        Y = I2;
+    <span class="hljs-keyword">else</span>
+        Y = I3;
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h4 data-source-line="84" id="3-using-an-always-block-with-a-case-statement">3. Using an <code>always</code> Block With a <code>case</code> Statement</h4>
+<p data-source-line="85">The third way to code a mux is by using an <code>always</code> block together with a <code>case</code> statement.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Y;
+
+<span class="hljs-keyword">always</span> @ (Sel, I0, I1, I2, I3)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">case</span> (Sel)
+        <span class="hljs-number">2'd0</span>:
+            Y = I0;
+        <span class="hljs-number">2'd1</span>:
+            Y = I1;
+        <span class="hljs-number">2'd2</span>:
+            Y = I2;
+        <span class="hljs-number">2'd3</span>:
+            Y = I3;
+        <span class="hljs-keyword">default</span>:
+            Y = <span class="hljs-number">2'd0</span>;
+    <span class="hljs-keyword">endcase</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 data-source-line="107" id="step-3-design-a-binary-decoder">Step 3: Design a Binary Decoder</h2>
+<p data-source-line="108">In this section you are going to design a 3:8 binary decoder. Bus <code>I[2:0]</code> is used as an input for 3:8 decoder and bus <code>Y[7:0]</code> is used to indicate the output of the decoder.</p>
+<h3 data-source-line="110" id="declare-a-38-binary-decoder">Declare a 3:8 Binary Decoder</h3>
+<p data-source-line="111">Create a Verilog module called <code>decoder_3_8</code> with inputs <code>I</code> and outputs <code>Y</code> as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> decoder_3_8 (
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] I,
+    <span class="hljs-keyword">output</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] Y
+);
+</code></pre>
+<h3 data-source-line="120" id="behavioral-description-of-38-binary-decoder-in-verilog-hdl">Behavioral Description of 3:8 Binary Decoder in Verilog HDL</h3>
+<p data-source-line="121">The most efficient way to describe the behavior of a decoder is to use a case statement in an always block.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] Y;
+
+<span class="hljs-keyword">always</span> @ (I)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">case</span> (I)
+        <span class="hljs-number">3'd0</span>:
+            Y = <span class="hljs-number">8'd1</span>;
+        <span class="hljs-number">3'd1</span>:
+            Y = <span class="hljs-number">8'd2</span>;
+        <span class="hljs-number">3'd2</span>:
+            Y = <span class="hljs-number">8'd4</span>;
+        <span class="hljs-number">3'd3</span>:
+            Y = <span class="hljs-number">8'd8</span>;
+        <span class="hljs-number">3'd4</span>:
+            Y = <span class="hljs-number">8'd16</span>;
+        <span class="hljs-number">3'd5</span>:
+            Y = <span class="hljs-number">8'd32</span>;
+        <span class="hljs-number">3'd6</span>:
+            Y = <span class="hljs-number">8'd64</span>;
+        <span class="hljs-number">3'd7</span>:
+            Y = <span class="hljs-number">8'd128</span>;
+        <span class="hljs-keyword">default</span>:
+            Y = <span class="hljs-number">8'd0</span>;
+    <span class="hljs-keyword">endcase</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 data-source-line="150" id="step-4-design-a-priority-encoder">Step 4: Design a Priority Encoder</h3>
+<p data-source-line="151">In this section, you are going to design a 4-input priority encoder. Bus <code>I[3:0]</code> will be used as data inputs. One bit, <code>Ein</code>, will act as the “Enable” signal. Bus <code>Y[1:0]</code> will show the encoded value of inputs, and two one bit outputs <code>GS</code> and <code>Eout</code> will show the group signal and enable output, respectively.</p>
+<h3 data-source-line="153" id="declare-a-4-input-priority-encoder">Declare a 4-Input Priority Encoder</h3>
+<p data-source-line="154">Create another Verilog module called <code>encoder</code> with inputs <code>I</code>, <code>Ein</code>, and outputs <code>Eout</code>, <code>GS</code>, and <code>Y</code> as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> encoder (
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] I,
+    <span class="hljs-keyword">input</span> Ein,
+    <span class="hljs-keyword">output</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Y,
+    <span class="hljs-keyword">output</span> GS,
+    <span class="hljs-keyword">output</span> Eout
+);
+</code></pre>
+<h3 data-source-line="166" id="behavioral-description-of-priority-encoder-in-verilog-hdl">Behavioral Description of Priority Encoder in Verilog HDL</h3>
+<p data-source-line="167">The most efficient way to describe the behavior of a priority encoder is to use <code>if-else</code> statement in an always block. As the priority encoder has three outputs, you will code the behavioral description for those three outputs in three always blocks.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] Y;
+<span class="hljs-keyword">reg</span> GS;
+<span class="hljs-keyword">reg</span> Eout;
+
+<span class="hljs-keyword">always</span> @ (I, Ein)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span>(Ein == <span class="hljs-number">1</span>)
+        Y = (I[<span class="hljs-number">3</span>] == <span class="hljs-number">1</span>) ? <span class="hljs-number">2'd3</span> : (
+                (I[<span class="hljs-number">2</span>] == <span class="hljs-number">1</span>) ? <span class="hljs-number">2'd2</span> : (
+                    (I[<span class="hljs-number">1</span>] == <span class="hljs-number">1</span>) ? <span class="hljs-number">2'd1</span> : <span class="hljs-number">2'd0</span>
+                )
+            );
+    <span class="hljs-keyword">else</span>
+        Y = <span class="hljs-number">2'd0</span>;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">always</span> @ (I, Ein)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (Ein == <span class="hljs-number">1</span> &amp;&amp; I == <span class="hljs-number">0</span>)
+        Eout = <span class="hljs-number">1'b1</span>;
+    <span class="hljs-keyword">else</span>
+        Eout = <span class="hljs-number">1'b0</span>;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">always</span> @ (I, Ein)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (Ein == <span class="hljs-number">1</span> &amp;&amp; I != <span class="hljs-number">0</span>)
+        GS = <span class="hljs-number">1'b1</span>;
+    <span class="hljs-keyword">else</span>
+        GS = <span class="hljs-number">1'b0</span>;
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h2 data-source-line="203" id="step-5-design-a-shifter">Step 5: Design a Shifter</h2>
+<p data-source-line="204">In this section, you are going to design a 4-input Shifter. Bus <code>I[3:0]</code> will be used as data inputs. Three other one bit inputs will act as control signals <code>F</code>, <code>R</code>, and <code>D</code>. Last, a one bit input, <code>En</code> will be used as the Enable signal. Bus <code>Y[3:0]</code> will show the output of the shifter.</p>
+<h3 data-source-line="206" id="declare-a-shifter">Declare a Shifter</h3>
+<p data-source-line="207">Create a Verilog module called shifter with inputs <code>I</code>, <code>En</code>, <code>D</code>, <code>R</code>, <code>F</code> and outputs <code>Y</code> as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> shifter (
+    <span class="hljs-keyword">input</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] I,
+    <span class="hljs-keyword">input</span> D,
+    <span class="hljs-keyword">input</span> R,
+    <span class="hljs-keyword">input</span> F,
+    <span class="hljs-keyword">input</span> En,
+    <span class="hljs-keyword">output</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] Y
+);
+</code></pre>
+<h2 data-source-line="220" id="behavioral-description-of-shifter-in-verilog-hdl">Behavioral Description of Shifter in Verilog HDL</h2>
+<p data-source-line="221">Similar to previous steps, you will use <code>if-else</code> statement again to implement the shifter.</p>
+<div class="row"><div class="col-md-8"><pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] Y;
+
+<span class="hljs-keyword">always</span> @ (I, Ein)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (En == <span class="hljs-number">0</span>)
+        Y = I;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">if</span> (R == <span class="hljs-number">0</span>)
+            Y = (D == <span class="hljs-number">0</span>) ? {I[<span class="hljs-number">2</span>:<span class="hljs-number">0</span>], F} : {F, I[<span class="hljs-number">3</span>:<span class="hljs-number">1</span>]};
+        <span class="hljs-keyword">else</span>
+            Y = (D == <span class="hljs-number">0</span>) ? {I[<span class="hljs-number">2</span>:<span class="hljs-number">0</span>], I[<span class="hljs-number">3</span>]} : {I[<span class="hljs-number">0</span>], I[<span class="hljs-number">3</span>:<span class="hljs-number">1</span>]};
+<span class="hljs-keyword">end</span>
+</code></pre>
+</div><div class="col-lg-4"><blockquote>
+<h4 class="bq-title" id="concatenation">Concatenation</h4>
+<p>In the shifter’s behavioral code, {A,B} is used to concatenate two groups of signals into a bus. For example, <code>Y = {I[2:0], F}</code> means <code>Y[3:1] = I[2:0]</code> and <code>Y[0] = F</code>.</p>
+</blockquote>
+</div></div><h2 data-source-line="248" id="requirements">Requirements</h2>
+<p data-source-line="249">For all requirements, refer to <a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/f71503618260e049b6c52e91d7f3d76b#step-3-verify-the-circuit-in-simulator"><strong>PROJECT 3.1: Majority of Five</strong></a> on creating a a simulation testbench. You can simulate verilog modules one by one, or you can create multiple testbenches. If you create multiple testbenches then before clicking <mark>Run Behavioral Simulation</mark>, you need to make sure that the simulation testbench is the top module within the <mark>Simulation Sources</mark> folder. You can do this by right clicking on the simulation source file you want to simulate and clicking <mark>Set as Top</mark>.</p>
+<h3 data-source-line="250" id="1-simulate-the-multiplexer"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Simulate the Multiplexer</h3>
+<p data-source-line="251">Create a test bench for the <mark>multiplexer circuit</mark> discussed in <mark>Step 1</mark>. Your testbench has to be written so to that you would test <mark>all possible input patterns</mark>.</p>
+<h3 data-source-line="253" id="2-simulate-the-decoder"><i aria-hidden="true" class="fa fa-check-square-o"></i> 2. Simulate the Decoder</h3>
+<p data-source-line="254">Create a test bench for the <mark>decoder circuit</mark> discussed in <mark>Step 2</mark>. Your testbench has to be written so to that you would test <mark>all possible input patterns</mark>.</p>
+<h3 data-source-line="256" id="3-simulate-the-encoder"><i aria-hidden="true" class="fa fa-check-square-o"></i> 3. Simulate the Encoder</h3>
+<p data-source-line="257">Create a test bench for the <mark>encoder circuit</mark> discussed in <mark>Step 3</mark>. Your testbench has to be written so to that you would test <mark>all possible input patterns</mark>.</p>
+<h3 data-source-line="259" id="4-simulate-the-shifter"><i aria-hidden="true" class="fa fa-check-square-o"></i> 4. Simulate the Shifter</h3>
+<p data-source-line="260">Create a test bench for the <mark>shifter circuit</mark> discussed in <mark>Step 4</mark>. Your testbench has to be written so to that you would test <mark>all possible input patterns</mark>.</p>
+<h2 data-source-line="262" id="next-project-mux-and-demux-a-simple-transmission-system"><i aria-hidden="true" class="fa fa-sign-out"></i> Next Project: Mux and Demux: A Simple Transmission System</h2>
+<p data-source-line="263">If you are confident in doing this project, go ahead and continue with the next <a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/7a4c294f83a531b3aa9f48fea3e26288"><strong>PROJECT 4.2: Mux and Demux: A Simple Transmission System</strong></a> for some extra practice!</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Flip-Flops
+            </h1>
+<h2>Memory Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                411
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="flip-flop">Flip-Flop</h2>
+<div class="row"><div class="col-md-9"><p>All useful memory devices have at least two inputs—one for the data signal to be memorized, and a timing control signal to define exactly when the data signal should be memorized. As shown Fig. 1, the current output of a memory device is called the “present state”, and the input is called the “next state” because it will define the memory at the next assertion of the timing control input. In a D-latch, the present state and next state are the same as long as the timing control input is asserted. A D flip-flop modifies the function of a D-latch in a fundamental and important way: the next state (or D input) can only be written into the memory on the edge (or transition) of the timing signal.</p>
+</div><div class="col-md-3"><figure><img alt="Figure 1. Memory Block" src="../images/d3125f8da2b87060ca50547b9d9dff7d.svg"/><figcaption>Figure 1. Memory Block</figcaption></figure>
+</div></div><div class="row"><div class="col-md-9"><p>A D flip-flop (DFF) is one of the most fundamental memory devices. A DFF typically has three inputs: a data input that defines the next state, a timing control input that tells the flip-flop exactly when to “memorize” the data input, and a reset input that can cause the memory to be reset to ‘0’, regardless of the other two inputs. The ‘D’ in DFF arises from the name of the data input; thus, the flip-flop may also be called a data flip-flop. The timing control input, called “clock”, is used to coordinate when new data can be written into the memory element, and conversely, when data cannot be written. A clock signal is most typically a square wave that regularly repeats at some frequency. A DFF records (or registers) new data whenever an active clock edge occurs—the active edge can be either the rising edge or the falling edge.</p>
+</div><div class="col-md-3"><figure><img alt="Figure 2. D Flip-Flop" src="../images/c3cd6f19bb74e3f7a13f6506688727bd.svg"/><figcaption>Figure 2. D Flip-Flop</figcaption></figure>
+</div></div><p data-source-line="21">A rising-edge triggered (RET) DFF symbol uses a triangle to show that the flip-flop is edge-triggered; a falling-edge triggered (FET) DFF symbol uses the same triangle, but with a bubble on the outside of the bounding box (just like any other asserted-low input). The timing diagram below in Fig. 3 illustrates RET DFF behavior. Note that the Q output changes only on the active edge of the clock, and the reset signal forces the output to ‘0’ regardless of the other inputs.</p>
+<figure data-source-line="23"><img alt="Figure 3. Clock for a Flip-Flop." src="../images/4afcd5429d4068cca36048f1779cb836.svg"/><figcaption>Figure 3. Clock for a Flip-Flop.</figcaption></figure>
+<div class="row"><div class="col-md-8"><p>As with the basic cells, a D flip-flop or D-latch can enter a metastable state if the data and control inputs are changed at exactly the same time. In a D-latch, the data must be stable when the control input is de-asserted. In a DFF, the data input must be stable for a time immediately before and immediately after the clock edge. If the data is not stable at the clock edge, a metastable state may be clocked into the memory element. If this happens, the memory element may not be able to immediately resolve to either low voltage or high voltage, and it may oscillate for a time. Thus, when designing circuits using edge-triggered flip-flops, it is important to ensure the data input is stable for adequate time prior to the clock edge (known as the setup time), and for a time after the clock edge (known as the hold time). Setup and hold times vary between several tens of picoseconds (for designs inside single IC’s) to several nanoseconds (for designs using discrete logic chips).</p>
+</div><div class="col-md-4"><figure><img alt="Figure 4. Window of change." src="../images/a8e5b5fba089d7f5d07b8c1c70704c55.svg"/><figcaption>Figure 4. Window of change.</figcaption></figure>
+</div></div><div class="row"><div class="col-md-9"><p>A schematic for a basic D flip-flop is shown in Fig. 4 above. Several slightly different schematics can be found in various references, but any circuit called a DFF will exhibit the same behavior.</p>
+<p>The DFF is the simplest and most useful edge-triggered memory device. Its output depends on a Data input and the clock input—at the active clock edge, the device output is driven to match the device’s data input. The D-FF can be used in any application that requires a flip- flop. Over the years, other flip-flops have been designed that behave similar to, but not exactly like a DFF. One common device, called a JK flip-flop, uses two inputs to direct state changes (the J input sets the output, and the K input resets the output; if both are asserted, the output toggles between ‘1’ and ‘0’). Another common device, the T flip-flop, simply toggles between ‘1’ and ‘0’ on each successive clock edge so long as the T input is asserted.</p>
+</div><div class="col-md-3"><figure><img alt="Figure 5. D Flip-Flop circuit." src="../images/03c149936dd596285410fd9015994366.svg"/><figcaption>Figure 5. D Flip-Flop circuit.</figcaption></figure>
+</div></div><p data-source-line="45">These devices were commonly used in older digital systems (especially those built of discrete 7400 logic ICs), but they are rarely encountered in modern designs. Both JK-FF and T-FF can be easily constructed from DFFs or from first principles using basic cells. In modern digital design, and particularly in designs destined for FPGAs or other complex logic chips, these other flip-flops offer no advantages and they will not be dealt with further here. Figure 6 below illustrates JK and T flip-flops.</p>
+<figure data-source-line="47"><img alt="Figure 6. JK and T flip-flops." src="../images/d8e701ab343af478bfdc51806d50d83c.svg"/><figcaption>Figure 6. JK and T flip-flops.</figcaption></figure>
+<h2 data-source-line="49" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="51">
+<li>All useful memory devices have at least two inputs—one for the data signal to be memorized, and a timing control signal to define exactly when the Data signal should be memorized.</li>
+<li>The current output of a memory device is called the “present state”, and the input is called the “next state” because it will define the memory at the next assertion of the timing control input.</li>
+<li>Flip-flop circuits are constructed in such a way as to make them operate properly when they are part of a sequential circuit that employs a single clock.</li>
+<li>In a DFF, the data input must be stable for a time immediately before and immediately after the clock edge.</li>
+<li>A JK flip-flop uses two inputs to direct state changes (the J input sets the output, and the K input resets the output; if both are asserted, the output toggles between ‘1’ and ‘0’).</li>
+<li>The T flip-flop simply toggles between ‘1’ and ‘0’ on each successive clock edge so long as the T input is asserted.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

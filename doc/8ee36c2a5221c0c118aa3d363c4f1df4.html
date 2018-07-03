@@ -1,0 +1,121 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                SR-Latch and D-Latch
+            </h1>
+<h2>Memory Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                447
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="overview">Overview</h2>
+<p data-source-line="3">A latch is one of the basic memory elements that store information in a digital system. One latch can store 1-bit of information. The outputs of a latch are constantly changing according to the inputs as long as the latch is enabled. In other words, the content of a latch changes immediately when the inputs change when it is enabled. When a latch is not enabled, the latch holds the value that is stored.</p>
+<p data-source-line="5">Here we will talk about two different kinds of latches: an SR-Latch and a D-Latch. The differences between them are the number of inputs and how they change the state.</p>
+<h2 data-source-line="7" id="sr-latch">SR-Latch</h2>
+<p data-source-line="9">SR-Latches use two inputs named S (for set) and R (for reset), and an output named Q (by convention, Q is nearly always used to label the output signal from a memory device). The S input, when asserted, “sets” the output to a ‘1’, and the R input “resets” the output to a ‘0’.</p>
+<figure data-source-line="11"><img alt="Figure 1. Basic NAND and NOR cells." src="../images/9c8b07d560e21ce9166a2fb5c93cdf71.svg"/><figcaption>Figure 1. Basic NAND and NOR cells.</figcaption></figure>
+<p data-source-line="13">Figure 1 above shows two basic implementations of an SR-Latch. These two cells are commonly referred to as “basic cells”. In the NAND circuit on the left, S must be driven to ‘0’ to drive Q to ‘1’, and R must be driven to ‘0’ to drive Q to ‘0’ (so both S and R are active low). The output Q is set by the positive pulse on S at time 2, and Q remains set until it is reset at time 3. Thus, Q exhibits memory by remaining at ‘1’ after the input S is de-asserted, and during the time between point 2 and point 3 the circuit memorized a logic ‘1’. Likewise, when R is asserted (as a negative pulse), Q is reset to logic ‘0’ and it remains there until it is set sometime in the future, and the circuit memorized a logic ‘0’.</p>
+<p data-source-line="15">In the NOR circuit on the right, S must be driven to ‘1’ to drive Q to ‘0’, and R must also be driven to ‘1’ to drive Q to ‘1’ (so both S and R are active high). The reader is highly encouraged to examine the circuits and timing diagrams below, and ensure that the behaviors shown are well understood.</p>
+<p data-source-line="17">The NAND and NOR circuits are symmetric, so either input can be labeled S or R. By convention, the output that S drives to ‘1’ is called Q, and the output that S drives to ‘0’ is called QN (and thus the NOR-based circuit above is mislabeled, while the one below is correctly labeled). In the NOR circuit, a ‘1’ on S drives Q to ‘1’ (provided R is at ‘0’), and so the NOR circuit inputs are active high. In the NAND circuit, a ‘0’ on S drives Q to ‘1’, and so the NAND inputs are active low.</p>
+<p data-source-line="19">In Fig. 2 below, the basic cells have been redrawn as a cross-coupled circuit, with the feedback path emboldened for emphasis. In the NOR basic cell, the Q output is derived from the gate driven directly by R, and so R can determine the output Q regardless of S: if R is driven to a ‘1’, Q will be a ‘0’ regardless of S. Thus, a NOR basic cell is said to be “reset dominant”. In the NAND basic cell, the input S can determine the output regardless of R: if S is driven to a ‘0’, Q will be ‘1’ regardless of R. The NAND basic cell is said to be “set-dominant”. The difference between set and reset dominance are evident in the truth table rows where both inputs are asserted. In the reset-dominant NOR cell, Q is forced to ‘0’ when R is asserted (last row), and in the set-dominant NAND cell Q is forced to ‘1’ when S is asserted (first row).</p>
+<figure data-source-line="21"><img alt="Figure 2. NAND/NOR SR-Latch." src="../images/1ab35cc88b413a67de802802e32b5e58.svg"/><figcaption>Figure 2. NAND/NOR SR-Latch.</figcaption></figure>
+<p data-source-line="23">Examining the truth tables and Fig. 2 above yields the following observations:</p>
+<ul data-source-line="25">
+<li>The middle two rows of the truth tables are similar for both circuits (i.e., both Q and QN are driven opposite from one another when either just S is asserted or just R is asserted).</li>
+<li>When both inputs are asserted, Q and QN are driven to the same logic level (i.e., they are no longer inverses of one another).</li>
+<li>When neither input is asserted, the logic level present on the feedback loop determines the circuit output.</li>
+</ul>
+<p data-source-line="29">Based on these observations, we can state the following behavioral rules for a basic cell (remembering that SET and RESET are active high for the NOR cell and low for the NAND cell):</p>
+<ul data-source-line="31">
+<li>When just SET is active, Q is driven to ‘1’ and QN is driven to ‘0’;</li>
+<li>When just RESET is active, Q is driven to ‘0’ and QN is driven to ‘1’;</li>
+<li>When both SET and RESET are active, Q and QN are both driven to ‘0’ (NOR cell) or ‘1’ (NAND cell);</li>
+<li>When neither SET or RESET are active, the output is determined by the logic value “stored” in the feedback loop.</li>
+</ul>
+<p data-source-line="36">If both inputs to a basic cell are de-asserted at exactly the same time, the feedback loop can become astable, and the memory device can get temporarily stuck in the astable region. This results from the fact that two different logic levels are introduced into the feedback loop at the same time, and these values “chase” each other around the loop creating an oscillation. The oscillation shown in the simulator results from the fact that gate delays can be set to exactly the same value, and inputs can be changed at exactly the same time. In a real circuit, gate delays are not identical and input values cannot change (to the picosecond) at exactly the same time. Thus, oscillations may be seen, but only for a short while. Equally likely is an output that “floats” temporarily between ‘1’ and ‘0’. Either behavior represents metastability, where the output from the memory circuit is temporarily not in one of the two stable operating states. Metastable states are highly unlikely in a real circuit, and if they are entered, they are quickly resolved to a stable state. But it is important to note that the possibility of a memory device entering a metastable state can never be eliminated.</p>
+<p data-source-line="38">We will use the NAND cell in the following discussion, but similar circuits could be built with the NOR cell.</p>
+<h2 data-source-line="40" id="d-latch">D-Latch</h2>
+<p data-source-line="42">The basic cell is the most rudimentary memory device, and it is useful in certain situations. But by adding only two logic gates to a basic cell, a much more useful memory device called a D-latch can be created. Latches are a type of temporary storage device that are normally placed in a different category from flip-flops. The main difference between latches and flip-flops is the method used for changing their state. A D-latch uses a basic cell for a memory element, but it only allows the value stored in memory to be changed (or “programmed”) when a timing control input is asserted. Thus, a D-latch has two inputs—the timing control input and a data input. The timing control input, commonly called “gate”, or “clock”, or “latch enable”, is used to coordinate when new data can be written into the memory element, and conversely, when data cannot be written. In Fig. 3 below, observe that when the Gate input is not asserted, S and R are driven to “1” and the output Q is determined by the value stored in the basic cell feedback loop (and so Q is showing the stored logic value). In the figure on the right, observe that when the Gate input is asserted, the D (for Data) input drives S and R to opposite levels, forcing a SET or RESET operation on the basic cell. By combining a timing control input and a data input that forces the basic cell to either SET or RESET, an useful memory device is created. The D-latch is widely used in all sorts of modern digital circuits.</p>
+<figure data-source-line="44"><img alt="Figure 3. D-Latch circuit." src="../images/72989701fefde3640c0c09f308c75698.svg"/><figcaption>Figure 3. D-Latch circuit.</figcaption></figure>
+<p data-source-line="46">A timing diagram for the D latch is shown below in Fig. 4. Note that when the Gate input is asserted, the output Q simply “follows” the input. But when the Gate input is not asserted, the output “remembers” the value present at D at the time the Gate signal was de-asserted.</p>
+<figure data-source-line="48"><img alt="Figure 4. D-Latch timing." src="../images/e765ea08a5aa16174c6dc9d2f909c56c.svg"/><figcaption>Figure 4. D-Latch timing.</figcaption></figure>
+<h2 data-source-line="50" id="important-ideas">Important Ideas</h2>
+<ul data-source-line="51">
+<li>But by adding only two logic gates to a basic cell, a much more useful memory device called a D-latch can be created.</li>
+<li>D-latch has two inputs—the timing control input and a data input. The timing control input, commonly called “gate”, or “clock”, or “latch enable”, is used to coordinate when new data can be written into the memory element, and conversely, when data cannot be written.</li>
+</ul>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

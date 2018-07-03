@@ -1,0 +1,304 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    7.1
+                                            Serial Adders
+            </h1>
+<h2>Introduction to State Machines</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                530
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="2">In this project, you are going to design a serial adder. A serial adder is a circuit that performs binary addition bit by bit (i.e., instead of presenting both operands at the inputs of an adder at the same time, the operands are fed into the serial adder bit by bit and it generates the answer on the fly). To design such a circuit, you are going to use the state diagram as the mode of describing the behavior of the circuit, and then translate the state diagram into Verilog code.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Download <a class="btn btn-sm btn-warning" href="/downloads/a2cee6e6015debe41f9a07a54629ff57.pdf"><strong>Submission Form 7</strong></a> <a class="btn btn-sm btn-warning" href="/downloads/a711d22099471d4a3eef032de7bafddf.pdf"><strong>Problem Set 7</strong></a>;</li>
+<li>Be able to describe digital circuits using logic operators;</li>
+<li>Be able to write test bench and simulate circuit using Vivado® Simulator;</li>
+<li>Be able to describe sequential circuits using always block.</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Be able to use the state diagram to describe the functionality of a digital system;</li>
+<li>Be able to describe the state diagram in Verilog;</li>
+</ul>
+</div></div><h2 data-source-line="21" id="background">Background</h2>
+<div class="row"><div class="col-md-7"><p>This module focuses on state machines and how to design sequential circuits. Refer to the background information links to your right before starting with this project. You’ll find that it helpful to have some background information before starting with strutctural state diagram designs.</p>
+</div><div class="col-lg-5 col-md-6 col-sm-12"><ul>
+<li><a class="btn btn-sm btn-success" href="/doc/d92ad2a0f9846d5d11206d6398a9c3ce"><strong>Intro to State Machines</strong></a></li>
+<li><a class="btn btn-sm btn-success" href="/doc/fc26cf6e35d2a61c6e2871dd9be9e21a"><strong>State Diagrams</strong></a></li>
+<li><a class="btn btn-sm btn-success" href="/doc/915f0203e4e1265055d179da5d5449ea"><strong>Structural Implementation of State Diagrams</strong></a></li>
+</ul>
+</div></div><h2 data-source-line="34" id="step-1-describe-the-serial-adder-using-the-state-diagram">Step 1: Describe the Serial Adder Using the State Diagram</h2>
+<h3 data-source-line="35" id="define-inputs-and-outputs">Define Inputs and Outputs</h3>
+<p data-source-line="36">Before designing the state diagram, we always need to define the inputs and outputs first. In this case, we have two data inputs named A and B. Both of them are 1-bit wires. As with the adder we described in the arithmetic circuit, we have a data output <code>F</code> and another output called <code>Cout</code> (Carry Out). We also need a clock signal (named <code>clk</code> here) to provide the timing reference for both the inputs and the outputs and a reset signal (named <code>rst</code>) to bring the circuit into initial state.</p>
+<h3 data-source-line="38" id="design-state-diagram">Design State Diagram</h3>
+<p data-source-line="40">Every state diagram starts from an initial state. So we will draw a circle to represent the initial state and we will name it <mark>S0</mark>. When <code>rst</code> is asserted, the circuit should reset to this initial state <mark>S0</mark>, and we define that both outputs will be initialized to be 0, as shown in Fig. 1 below.</p>
+<figure data-source-line="42"><img alt="Figure 1. Initial State." src="../images/f1165c4b895abeb248988b38d289b8c6.svg"/><figcaption>Figure 1. Initial State.</figcaption></figure>
+<p data-source-line="44">Now, we will try to see where to go from the initial state when inputs come. Let’s consider the case when neither <code>A</code> or <code>B</code> are asserted. If <code>A</code> is 0, and <code>B</code> is 0, the result of the current bit will be 0 with no carry generated. And it is exactly the initial state. So we just need to draw an arrow from <mark>S0</mark> to <mark>S0</mark> (self loop) and label it <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>A</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mi>B</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline A \cdot \overline B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.8833300000000001em;"></span><span class="strut bottom" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="base"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit">A</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span><span class="mbin">⋅</span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line hide-tail" style="height:0.04em;"><svg height="400em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 400000" width="400em"><path d="M0 0 h400000 v400000 h-400000z M0 0 h400000 v400000 h-400000z"></path></svg></span></span></span></span></span></span></span></span></span></eq>, as shown in Fig. 2 below.</p>
+<figure data-source-line="46"><img alt="Figure 2. Self loop on S0." src="../images/791712cad61837f51840d4f82ac2c8d3.svg"/><figcaption>Figure 2. Self loop on S0.</figcaption></figure>
+<p data-source-line="48">Let’s consider the case when one of the inputs <code>A</code> and <code>B</code> is asserted. The result of the current bit should be 1 with no carry out generated. Circuits will certainly be in a different state than the initial state <mark>S0</mark>. So we will create another state by drawing another circle and labeling it <mark>S1</mark>. The condition that the circuit will go from <mark>S0</mark> to <mark>S1</mark> is that one of <code>A</code> and <code>B</code> is 1. We can draw an arrow from <mark>S0</mark> to <mark>S1</mark> and label it <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A⊕B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">⊕</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq>. When the circuit arrives at state <mark>S1</mark>, output <code>F</code> should be driven high and <code>Cou</code>t remains low. Thus, we label <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">F=1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span></eq> and <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Cout=0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit">o</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></eq> beside state <mark>S1</mark>. The new state diagram is shown below in Fig. 3.</p>
+<figure data-source-line="50"><img alt="Figure 3. Transition from S0 to S1." src="../images/fbafd8dd8980050fe75a439a7ca311ba.svg"/><figcaption>Figure 3. Transition from S0 to S1.</figcaption></figure>
+<p data-source-line="52">Starting from initial state, we have one case left that we have not yet considered—both <code>A</code> and <code>B</code> are asserted. In this case, the output <code>F</code> is <mark>0</mark> and a carry will be generated. This is certainly another state that is different from either <mark>S0</mark> or <mark>S1</mark>. So we will need to create another state and label it <mark>S2</mark>. The transition from <mark>S0</mark> to <mark>S2</mark> should be described as an arrow starting with <mark>S0</mark> and ending at <mark>S2</mark> with a label<eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \cdot B</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span><span class="mbin">⋅</span><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span></eq> as shown in Fig. 4 below.</p>
+<figure data-source-line="54"><img alt="Figure 4. Transition from S0 to S2." src="../images/adb96cb12b10fd680f16a29cf38c48b4.svg"/><figcaption>Figure 4. Transition from S0 to S2.</figcaption></figure>
+<p data-source-line="56">Now we have three states in the state diagram <mark>S0</mark>, <mark>S1</mark>, <mark>S2</mark> and we have considered all of the transitions starting from <mark>S0</mark>. So Let’s start from state S1 and repeat the previous three steps. You can do it on your own and check your new state diagram with Fig. 5 shown below.</p>
+<figure data-source-line="58"><img alt="Figure 5. Transitions from S1." src="../images/5007d037e256e52b41d370a2f79cafb6.svg"/><figcaption>Figure 5. Transitions from S1.</figcaption></figure>
+<p data-source-line="60">We have covered all of the transitions starting from <mark>S0</mark> and <mark>S1</mark>. Now assume that we start from <mark>S2</mark>. Repeat the steps and check your new state diagram with the one shown in Fig. 6 below.</p>
+<figure data-source-line="62"><img alt="Figure 6. Transitions from S2." src="../images/8a0e36a5f8c808230b5ff83197511aa5.svg"/><figcaption>Figure 6. Transitions from S2.</figcaption></figure>
+<p data-source-line="64">If you did this correctly, you will notice that when you are in <mark>S2</mark>, and both <code>A</code> and <code>B</code> are asserted, you need to add the carry generated by the previous bit together with current <code>A</code> and <code>B</code> together, resulting in <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">F=1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span></eq> and <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Cout=1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit">o</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span></eq>. This is a state that is different from <mark>S0</mark>, <mark>S1</mark> and <mark>S2</mark>. So we have the fourth state in the state machine and we will label it <mark>S3</mark>.</p>
+<p data-source-line="66">As we have one more state from last step, we need to consider all of the input patterns starting from <mark>S3</mark>. You can do it on your own and check your result with the one shown in Fig. 7 below.</p>
+<figure data-source-line="68"><img alt="Figure 7. Transitions from S3." src="../images/2c0cf490973dda99c39a0a9599ee178a.svg"/><figcaption>Figure 7. Transitions from S3.</figcaption></figure>
+<h2 data-source-line="70" id="step-2-code-a-state-machine-in-verilog">Step 2: Code a State Machine in Verilog</h2>
+<p data-source-line="72">A state machine is composed of three parts: next state decoding logic, state registers, and output logic, as shown in Fig. 8 below.</p>
+<figure data-source-line="74"><img alt="Figure 8. State machine." src="../images/665e18f7ced8c9add8feef0d8cbe7a30.svg"/><figcaption>Figure 8. State machine.</figcaption></figure>
+<p data-source-line="76">The next state logic is a combinational block that implements the state transition logic. In other words, it generates the state code for the next state based on the present state and inputs. The state register updates the current state with the next state logic, calculated by the next state logic at every rising edge of the clock. The output logic is another combinational logic block that asserts the output based on the present state. So we can code the state machine in sections—a combinational block for next state logic, a sequential block for state register, and finally another combinational block for output logic.</p>
+<h3 data-source-line="78" id="declare-inputs-and-outputs">Declare Inputs and Outputs</h3>
+<p data-source-line="80">The first step to describe any circuit is the inputs and outputs description. In this serial adder, we have <code>A</code>, <code>B</code>, <code>clk</code>, and <code>rst</code> as inputs and <code>F</code>, <code>Cout</code> as outputs. Feel free to try this on your own first and then check the example code by clicking <mark>show/hide code</mark>.</p>
+<p data-source-line="82"><button class="btn btn-sm btn-grey" data-target="#demo1" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo1">
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> SA(
+    <span class="hljs-keyword">input</span> A,
+    <span class="hljs-keyword">input</span> B,
+    <span class="hljs-keyword">output</span> F,
+    <span class="hljs-keyword">output</span> Cout,
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst
+    );
+</code></pre>
+</div>
+<h3 data-source-line="98" id="define-states">Define States</h3>
+<p data-source-line="100">Instead of using numbers to directly represent states, it is always good practice to define state codes as constant variables so that you can change the state encoding easily in the future. In Verilog, you will use the <code>localparam</code> statement to define constant variables.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-comment">// Define State Codes</span>
+<span class="hljs-keyword">localparam</span> S0 = <span class="hljs-number">2'b00</span>;
+<span class="hljs-keyword">localparam</span> S1 = <span class="hljs-number">2'b01</span>;
+<span class="hljs-keyword">localparam</span> S2 = <span class="hljs-number">2'b10</span>;
+<span class="hljs-keyword">localparam</span> S3 = <span class="hljs-number">2'b11</span>;
+</code></pre>
+<h3 data-source-line="110" id="internal-signals-for-current-state-and-next-state">Internal Signals for Current State and Next State</h3>
+<p data-source-line="112">You need to declare internal signals for the next state and the present state. In this example, you only have four states. As you defined the state code to be 2 bits, our next state and present state signals should be two-bits wide.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] pState, nState;
+</code></pre>
+<h3 data-source-line="118" id="describe-state-diagram-in-verilog">Describe State Diagram in Verilog</h3>
+<p data-source-line="120">Now you need to code the next state logic. As it is a combinational block, we need to put all of the inputs to this block into the brackets after <code>always @</code>. The block will drive the next state signal (<code>nState</code>) based on the present state (<code>pState</code>) signals and inputs (<code>A</code> and <code>B</code>). In state diagrams, we describe state transitions by an arrow starting from present state and pointing to the next state with a label showing input conditions for state transition. It is pretty straightforward to use case statement to describe the state transitions.</p>
+<p data-source-line="122"><button class="btn btn-sm btn-grey" data-target="#demo2" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo2">
+<pre><code class="hljs language-verilog"><span class="hljs-comment">// Combinational Logic: Next State Logic</span>
+<span class="hljs-keyword">always</span> @ (pState, A, B)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">case</span> (pState)
+        S0:<span class="hljs-keyword">begin</span>
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S0;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S2;
+            <span class="hljs-keyword">else</span>
+                nState = S1;
+            <span class="hljs-keyword">end</span>
+        S1:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S0;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S2;
+            <span class="hljs-keyword">else</span>
+                nState = S1;
+        S2:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S1;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S3;
+            <span class="hljs-keyword">else</span>
+                nState = S2;
+        S3:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S1	;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S3;
+            <span class="hljs-keyword">else</span>
+                nState = S2;
+        <span class="hljs-keyword">default</span>:
+            nState = S0;
+    <span class="hljs-keyword">endcase</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+</div>
+<p data-source-line="166">The state registers are just D flip-flops with reset signals. The code is as follows:</p>
+<p data-source-line="168"><button class="btn btn-sm btn-grey" data-target="#demo3" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo3">
+<pre><code class="hljs language-verilog"><span class="hljs-comment">// State Registers</span>
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        pState &lt;= S0;
+    <span class="hljs-keyword">else</span>
+        pState &lt;= nState;
+<span class="hljs-keyword">end</span>
+</code></pre>
+</div>
+<p data-source-line="183">Finally, the output logic drives the outputs based on present state and Mealy inputs. In our case, we do not have Mealy inputs. You can use the case statement similar to the next state logic to code the output logic here. In this example, the <code>assign</code> statement is used to show that various syntaxes can be used to describe combinational circuits.</p>
+<p data-source-line="185"><button class="btn btn-sm btn-grey" data-target="#demo4" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo4">
+<pre><code class="hljs language-verilog"><span class="hljs-comment">// Output Logic</span>
+<span class="hljs-keyword">assign</span> F = (pState == S1 || pState == S3) ? <span class="hljs-number">1'b1</span> : <span class="hljs-number">1'b0</span>;
+<span class="hljs-keyword">assign</span> Cout = (pState == S2 || pState == S3) ? <span class="hljs-number">1'b1</span> : <span class="hljs-number">1'b0</span>;
+</code></pre>
+</div>
+<p data-source-line="196">By putting all of those pieces shown above together, the file should look like this:</p>
+<p data-source-line="198"><button class="btn btn-sm btn-grey" data-target="#demo5" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo5">
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> SA(
+    <span class="hljs-keyword">input</span> A,
+    <span class="hljs-keyword">input</span> B,
+    <span class="hljs-keyword">output</span> F,
+    <span class="hljs-keyword">output</span> Cout,
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst
+    );
+
+<span class="hljs-comment">// Define State Codes</span>
+<span class="hljs-keyword">localparam</span> S0 = <span class="hljs-number">2'b00</span>;
+<span class="hljs-keyword">localparam</span> S1 = <span class="hljs-number">2'b01</span>;
+<span class="hljs-keyword">localparam</span> S2 = <span class="hljs-number">2'b10</span>;
+<span class="hljs-keyword">localparam</span> S3 = <span class="hljs-number">2'b11</span>;
+
+<span class="hljs-keyword">reg</span> [<span class="hljs-number">1</span>:<span class="hljs-number">0</span>] pState, nState;
+
+<span class="hljs-comment">// Combinational Logic: Next State Logic</span>
+<span class="hljs-keyword">always</span> @ (pState, A, B)
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">case</span> (pState)
+        S0:<span class="hljs-keyword">begin</span>
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S0;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S2;
+            <span class="hljs-keyword">else</span>
+                nState = S1;
+            <span class="hljs-keyword">end</span>
+        S1:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S0;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S2;
+            <span class="hljs-keyword">else</span>
+                nState = S1;
+        S2:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S1;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S3;
+            <span class="hljs-keyword">else</span>
+                nState = S2;
+        S3:
+            <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b0</span> &amp;&amp; B == <span class="hljs-number">1'b0</span>)
+                nState = S1	;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A == <span class="hljs-number">1'b1</span> &amp;&amp; B == <span class="hljs-number">1'b1</span>)
+                nState = S3;
+            <span class="hljs-keyword">else</span>
+                nState = S2;
+        <span class="hljs-keyword">default</span>:
+            nState = S0;
+    <span class="hljs-keyword">endcase</span>
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">// State Registers</span>
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        pState &lt;= S0;
+    <span class="hljs-keyword">else</span>
+        pState &lt;= nState;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment">// Output Logic</span>
+<span class="hljs-keyword">assign</span> F = (pState == S1 || pState == S3) ? <span class="hljs-number">1'b1</span> : <span class="hljs-number">1'b0</span>;
+<span class="hljs-keyword">assign</span> Cout = (pState == S2 || pState == S3) ? <span class="hljs-number">1'b1</span> : <span class="hljs-number">1'b0</span>;
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h2 data-source-line="276" id="requirement">Requirement</h2>
+<h3 data-source-line="278" id="1-simulate-the-serial-adder-and-prove-its-correctness"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Simulate the Serial Adder and Prove its Correctness</h3>
+<p data-source-line="280">Simulate the serial adder created in step 2 and prove its correctness, make sure you cover <strong>all</strong> combinations of inputs when creating your testbench.</p>
+<h2 data-source-line="282" id="next-project-stopwatch"><i aria-hidden="true" class="fa fa-sign-out"></i> Next Project: Stopwatch</h2>
+<p data-source-line="283">If you are confident in doing this porject, go ahead and continue with the next <a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/f37ebfdbe64354eb1177f7db2df59b47"><strong>PROJECT 7.2: Stopwatch</strong></a></p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

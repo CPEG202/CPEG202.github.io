@@ -1,0 +1,95 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>                Verilog HDL: Overview
+            </h1>
+<h2>Background and History</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                221
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction-to-hardware-description-language">Introduction to Hardware Description Language</h2>
+<p data-source-line="2">Hardware Description Language (HDL) was introduced as a means to provide a detailed design specification of a digital circuit, with little thought given to how a circuit might be implemented based on that specification (the assumption was the requirements in the source file would be captured as a schematic by a skilled engineer). At the time, the creation of a design specification, although involved, was almost trivial in comparison to the amount of work required to translate the specification to a schematic-based structural description needed to fabricate a device. Over several years, it became clear that a computer program could be written to automatically translate a HDL behavioral specification to a structural circuit, and a new class of computer programs called synthesizers began appearing. A synthesizer produces a low-level, structural description of a circuit based on its HDL description. This automated behavioral-to-structural translation of a circuit definition greatly reduced the amount of human effort required to produce a circuit.</p>
+<p data-source-line="4">The use of HDLs and synthesizers has revolutionized the way in which digital engineers work, and it is important to keep in mind how rapidly this change has come about. In 1990, very few new designs were started using HDLs (the vast majority were schematic based). By the mid 1990s, roughly half of all new designs were using HDLs, and today, all but the most trivial designs use HDL methods. Such rapid change demonstrates the recognition of engineers to the overwhelming advantages of using HDLs.</p>
+<p data-source-line="6">But such rapid change also means that tools, methods, and technologies are still evolving, and that CAD tools are continuing to be developed and improved upon. Digital design CAD tools can be placed in two major categories. the “front-end” tools that allow a design to be captured and simulated, and “back-end” tools that synthesize a design, map it to a particular technology, and analyze its performance (thus, front-end tools work mostly with virtual circuits, and back-end tools work mostly with physical circuits). Several companies produce CAD tools, with some focusing on front-end tools, some on back-end tools, and some on both. Two major HDLs have emerged, one developed by and for private industry (called Verilog®), and the other fueled by the government and specified by IEEE (VHDL). Both are similar in appearance and application, and both have their relative advantages. We will use Verilog in this course because it is used more commonly in the industry today. It should be noted that after learning one of the two languages, the other can be adopted quickly.</p>
+<p data-source-line="8">HDLs have allowed design engineers to increase their productivity manyfold in just a few years. It is fair to say that a well-equipped engineer today is as productive as a small team of engineers just a few years ago. Furthermore, hardware specification is now within the reach of a wider range of engineers; no longer is it the domain of only a few with highly specialized training and experience. In order to support this increased level of productivity, engineers must master a new set of design skills: they must be able to craft behavioral circuit definitions that provably meet design requirements; they must understand synthesis and other CAD tool processes so that results can be critically examined and interpreted; and they must be able to model external interfaces to the design so that it can be rigorously tested and verified. The extra degree of abstraction that HDL allows brings many new sources of potential errors, and designers must be able to recognize and address such errors when they occur.</p>
+<h2 data-source-line="10" id="verilog-hdl-a-brief-history">Verilog HDL: A Brief History</h2>
+<p data-source-line="11">Verilog HDL was invented by Phil Moorby and Prabhu Goel around 1984. It served as a proprietary hardware modeling language owned by Gateway Design Automation Inc. At that time, the language was not standardized. It modified itself in almost all the revisions that came out between 1984 to 1990.</p>
+<p data-source-line="13">In 1990, Gateway Design Automation Inc was acquired by Cadence Design System, which is now one of the biggest suppliers of electronic design technologies and engineering services in the electronic design automation (EDA) industry. Cadence recognized the value of Verilog, and realized that if Verilog remained as a closed language, the pressure of standardization would eventually drive people to shift to VHDL. So in 1991 the Open Verilog International (OVI) (now known as Accellera) was organized by Candence and the documentation of Verilog was transferred to public domain under the name of OVI. It was later submitted to IEEE and became IEEE standard 1364-1995, commonly referred as Verilog-95.</p>
+<p data-source-line="15">In 2001, extensions to Verilog-95 were submitted back to IEEE and became IEEE standard 1364-2001, known as Verilog-2001. The extensions covered some deficiencies that users had found in the Verilog-95. One of the most significant upgrades was that signed variables (in 2.s complement) became supported. Verilog-2001 is now the dominant edition of Verilog supported by most design tools.</p>
+<p data-source-line="17">In 2005, Verilog-2005 (IEEE Standard 1364-2005) was published with minor corrections and modifications. Also in 2005 System Verilog, a superset of Verilog-2005, with many new features and capabilities to aid design verification, was published. As of 2009, SystemVerilog and Verilog language standards were merged into SystemVerilog 2009 (IEEE Standard 1800-2009), which is one of the most popular languages for IC design and verification today. Xilinx® Vivado Design Suite, released in 2013, can support SystemVerilog for FPGA design and verification.</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

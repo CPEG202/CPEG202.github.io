@@ -1,0 +1,133 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    7.2
+                                            Stopwatch
+            </h1>
+<h2>State Machines</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                585
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="2">In this design challenge, you are going to be asked to put combinational circuits, sequential circuits, and state machines together and design a stopwatch on the Blackboard.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Download <a class="btn btn-sm btn-warning" href="/downloads/a2cee6e6015debe41f9a07a54629ff57.pdf"><strong>Submission Form 7</strong></a> <a class="btn btn-sm btn-warning" href="/downloads/a711d22099471d4a3eef032de7bafddf.pdf"><strong>Problem Set 7</strong></a>;</li>
+<li>Be able to code combinational and sequential circuits behaviorally and structurally in Verilog HDL;</li>
+<li>Be able to design and implement state machines to encode the functional description of a digital system.</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Be able to design a complex digital circuit using state machine, combinational circuit, and sequential circuit components.</li>
+</ul>
+</div></div><h2 data-source-line="19" id="requirements">Requirements</h2>
+<h3 data-source-line="20" id="1-stopwatch-with-start-stop-increment-and-clear-functionality"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Stopwatch with Start, Stop, Increment, and Clear Functionality</h3>
+<p data-source-line="22">In this project, you need to create a four-digit stopwatch on your board, using the seven-segment display as an output device. The stopwatch should count from 0.000 to 9.999 seconds and then roll over, with the count value updating exactly once per millisecond. Each time the counter rolls over, update a 4-bit binary counter and display the bits on four digits of the seven-segment display.</p>
+<p data-source-line="24">For this part the stopwatch requires three push button inputs: start, stop, increment, and clear (reset). The increment function should cause the displayed count value to increment once each time the button is pressed, regardless of how long the increment button is held down.</p>
+<blockquote class="bq-primary" data-source-line="26">
+<h4 class="bq-title" id="hint-1-system-block-diagram">Hint #1 - System block Diagram</h4>
+<p>You can find a partial/incomplete block diagram in Fig. 1 below. According to the block diagram in Fig. 1, you have built some of the blocks already in previous projects, e.g., seven-segment decoder, 4-1 bus mux, clock divider, 2-4 decoder, and 2-bit binary counter. New modules you need to design at for this project are the controller block and the decimal counter.</p>
+<figure><img alt="Figure 1. Stopwatch block diagram." src="../images/c43fb84c342ba72119aa12857d950e23.svg"/><figcaption>Figure 1. Stopwatch block diagram.</figcaption></figure>
+<p>Note that not all behaviors are fully specified in the design requirements section above. For example, if the timer is currently running and the increment button is pressed, no requirement is given to specify how the timer should behave. As an engineer, you must understand the design intent, and create behaviors for underspecified behaviors that are consistent with your understanding of the intent. In practice, it is difficult (or even impossible) to completely specify every behavior in a written document, so engineers frequently invent behaviors where specifications are lacking. Figures providing greater detail for the blocks shown above are shown below.</p>
+</blockquote>
+<blockquote class="bq-primary" data-source-line="36">
+<h4 class="bq-title" id="hint-2-decimal-counter">Hint #2 - Decimal Counter</h4>
+<h5 id=""></h5>
+<div class="row"><div class="col-md-3"><figure><img alt="Figure 2. 4-digit Decimal Counter" src="../images/31ddc685d97be230232652562b754335.svg"/><figcaption>Figure 2. 4-digit Decimal Counter</figcaption></figure>
+</div><div class="col-lg-9"><p>The timer requires a four-digit decimal counter. Such a counter can be built from four individual counters that each count between 0 and 9 (<code>0000</code> to <code>1001</code>), and then roll over from 9 back to 0, creating a continuous count pattern with 10 binary numbers.</p>
+<p>Individual counters are based on 4-bit binary counters that each detect when the pattern <code>1001</code> is present on their outputs. When <code>1001</code> is detected, the counters reset themselves back to <code>0000</code> and issue a terminal count (<code>TC</code>) signal to indicate the count range is complete and counter is resetting back to zero.</p>
+<p>Each counter also uses an enable signal (<code>CEN</code>). When <code>CEN</code> is asserted, the counter will increment with each clock edge, but when it is deasserted, the counter will ignore the clock and hold at its present state. The <code>CEN</code> signal can be used to enable more significant counters each time a less significant counter completes its count range.</p>
+<p>The <code>TC</code> signal is typically driven by logic gate combining the count bits according to some function (in our case, <code>TC_1001</code> is generated by a 4-input AND gate detecting <code>1001</code>). <code>TC_1001</code> will be asserted for as long the <code>1001</code> pattern is present on the counter outputs. In the least significant counter, this is a single clock period. But in the next most significant counter (representing the 10ms position in a four digit decimal number), the <code>1001</code> pattern will be present for 10 clock periods, and so its <code>TC_1001</code> signal will be asserted for 10 system clock periods.</p>
+</div></div><p>To keep the next most significant counter from counting 10 times (during the period <code>TC_1001</code> is asserted), the <code>TC_1001</code> signal from the first counter must be combined with the <code>TC_1001</code> signal from the next most significant counter. In fact, a little thinking about the problem will reveal that each <code>TC_1001</code> from more significant counters must be combined with all such signals from all less significant counters.</p>
+<p>The outputs of the four individual counters can be assembled into a single 16 bit bus for transport to the seven-segment display controller.</p>
+</blockquote>
+<blockquote class="bq-primary" data-source-line="59">
+<h4 class="bq-title" id="hint-3-seven-segment-display-controller">Hint #3 - Seven Segment Display Controller</h4>
+<p>The block diagram below shows a structural design of the seven segment display controller.</p>
+<figure><img alt="Figure 3. Seven Segment Display Controller" src="../images/f01f7c9068f7ae11e5e3f2a4719e11c2.svg"/><figcaption>Figure 3. Seven Segment Display Controller</figcaption></figure>
+<p>Note that not all behaviors are fully specified in the design requirements section above. For example, if the timer is currently running and the increment button is pressed, no requirement is given to specify how the timer should behave. As an engineer, you must understand the design intent, and create behaviors for underspecified behaviors that are consistent with your understanding of the intent. In practice, it is difficult (or even impossible) to completely specify every behavior in a written document, so engineers frequently invent behaviors where specifications are lacking. Figures providing greater detail for the blocks shown above are shown below.</p>
+</blockquote>
+<h4 data-source-line="68" id="final-result-of-your-stopwatch">Final Result of your Stopwatch</h4>
+<div class="row"><div class="col-md-5"><p>Notice from the video that pushbuttons are used to “start”, “stop”, “increment”, and “clear” your stopwatch.</p>
+</div><div class="col-lg-7 col-md-6 col-sm-12"><iframe allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/5xqhHnoGYj8" style="max-width:100%;" width="560"></iframe>
+</div></div><h3 data-source-line="81" id="2-state-diagram-of-the-stopwatch-controller"><i aria-hidden="true" class="fa fa-check-square-o"></i> 2. State Diagram of the Stopwatch Controller</h3>
+<p data-source-line="83">Draw a state diagram of your stopwatch controller on a paper and explain to the teaching assistant how it works.</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

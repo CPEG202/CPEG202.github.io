@@ -1,0 +1,233 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    6.2
+                                            Counters and Clock Dividers
+            </h1>
+<h2>When Arithmetic Circuits Meet Sequential Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                562
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="3">A lot of interesting things can be built by combining arithmetic circuits and sequential elements. In this project, you are going to provide arithmetic circuits with timing references by integrating arithmetic circuits with flip-flops. In the first part, you are going to use an adder with a register file (an array of flip-flops) to implement a counter that increases the number by 1 when the rising edge of the clock arrives. In the second part, you are going to revisit clock dividers. You will then implement a clock divider whose frequency can be more precisely calculated compared to the clock divider implemented in the previous projects.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Download <a class="btn btn-sm btn-warning" href="/downloads/f58306f7653fbc43384cebb596876f73.pdf"><strong>Submission Form 6</strong></a> <a class="btn btn-sm btn-warning" href="/downloads/0dcedfd0147791ee2524c4473ee3197e.pdf"><strong>Problem Set 6</strong></a>;</li>
+<li>Be able to describe digital circuits using logic operators;</li>
+<li>Be able to write test bench and simulate circuit using Vivado® Simulator;</li>
+<li>Be able to describe sequential circuits using always block.</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Be able to describe counters in Verilog;</li>
+<li>Be able to design clock dividers with counters;</li>
+</ul>
+</div></div><h2 data-source-line="22" id="background">Background</h2>
+<p data-source-line="23">A counter is no more than an adder with a flip-flop for each of the output bits. The block diagram of a counter is shown below in Fig. 1. Refer to:</p>
+<ul data-source-line="24">
+<li><a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/93419497b2b9c29e339754e97ec081ad#background"><strong>PROJECT 6.1: Comparators, Adders, and Multipliers</strong></a> background topics to review some material about adders and comparators</li>
+<li><a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/87771169bd95f521963e03a1f9a27dad"><strong>PROJECT 5.3: Clock Divider</strong></a> for more information about flip-flops.</li>
+</ul>
+<figure data-source-line="27"><img alt="Figure 1. Block diagram of 8-bit counter." src="../images/b5cca941ecfd70f4d4e802c1f9670788.svg"/><figcaption>Figure 1. Block diagram of 8-bit counter.</figcaption></figure>
+<p data-source-line="29">When reset signal <code>rst</code> is asserted, the outputs of the counter <code>Q[7:0]</code> are 0. The outputs of flip-flops feed back to the input of the ripple-carry adder and present <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0+1=1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathrm">0</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span></eq> at the input of the flip-flops. When the reset signal is de-asserted, the outputs turn to 1 after the rising edge of the clock arrives. And <eq><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1+1=2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord mathrm">2</span></span></span></span></eq> will be presented at the inputs of the flip-flops. After the second rising edge of the clock arrives, 2 will show up on the outputs of the counter. As a result of the analysis, the flip-flops provide a timing reference (clock) to the adder so that the output of the counter is increased by 1 every time the rising edge of clock arrives.</p>
+<h2 data-source-line="31" id="step-1-design-an-8-bit-counter">Step 1: Design an 8-bit Counter</h2>
+<p data-source-line="33">To describe the circuit shown in figure 1 structurally in Verilog, you can use the RCA and the flip-flops you implemented in previous projects. Actually, it is a lot easier to code it behaviorally. To describe any sequential circuit, you can use the similar always block as the one you used to describe a D flip-flop. To implement the counter behaviorally, there are three statements you need to make:</p>
+<ul data-source-line="35">
+<li>When will the always block be triggered? The output of the counter will be updated at the rising edge of the clock (functionality of FF) or the rising edge of the reset signal (asynchronous reset).</li>
+<li>How does output react when reset is asserted? The output of the counter will be reset to ‘0’ when reset is asserted.</li>
+<li>How does output react when the rising edge of clock arrives? The output is updated to the output of the adder, which is the output of the counter before the rising edge arrives, plus 1.</li>
+</ul>
+<p data-source-line="39">So, the code for a counter can be seen by clicking the button below, you can try to write your own counter first before checking the example code.</p>
+<p data-source-line="41"><button class="btn btn-sm btn-grey" data-target="#demo1" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo1">
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> counter(
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> [<span class="hljs-number">7</span>:<span class="hljs-number">0</span>] Q
+    );
+
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))	<span class="hljs-comment">// When will Always Block Be Triggered</span>
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        <span class="hljs-comment">// How Output reacts when Reset Is Asserted</span>
+        Q &lt;= <span class="hljs-number">8'b0</span>;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-comment">// How Output reacts when Rising Edge of Clock Arrives?</span>
+        Q &lt;= Q + <span class="hljs-number">1'b1</span>;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h2 data-source-line="65" id="step-2-design-a-clock-divider">Step 2: Design a Clock Divider</h2>
+<p data-source-line="67">In the previous module, you learned how to use a flip-flop with an inverter to implement a clock divider that divides the frequency in half. In this section, you can use a counter with a comparator to condition a flip-flop with an inverter to implement a clock divider that can control the output frequency more precisely. The block diagram of such a clock divider is shown in Fig. 2.</p>
+<figure data-source-line="69"><img alt="Figure 2. Clock divider with a counter and a comparator." src="../images/590b0f987099aae17ec710a8a9117e65.svg"/><figcaption>Figure 2. Clock divider with a counter and a comparator.</figcaption></figure>
+<p data-source-line="71">In the block diagram, the counter increases by 1 whenever the rising edge of clk arrives. It also resets its output to <mark>‘0’</mark> when it reaches the constant number defined in the constant block. The comparator compares the output of the counter with the pre-defined constant and asserts <code>EQ</code> if the output of counter is equal to the pre-defined constant. When <code>EQ</code> is asserted, the output of the clock divider flips.</p>
+<p data-source-line="73">Let’s assume that the pre-defined number is 3, and the output of clock divider (<mark>clk_div</mark>) is initialized to 0. It takes three clock cycles before the output of the counter equals the pre-defined constant, 3. When it reaches 3, the output of clock divider (<mark>clk_div</mark>) turns to 1, and the counter resets itself. It takes another three cycles before the output of the counter equals the pre-defined constant, 3. When it reaches 3 again, <mark>clk_div</mark> turns back to 0. So it takes 6 clock cycles before <mark>clk_div</mark> goes to 1 and returns to 0 again. As a result, the frequency of <mark>clk_div</mark> is one sixth of the frequency of original <code>clk</code>.</p>
+<p data-source-line="75">In this example, you are going to use this clock divider to implement a signal of exactly 1 Hz frequency. First, you will need to calculate the constant. As an example, the input clock frequency of the Blackboard is 100 MHz. You want your <mark>clk_div</mark> to be 1 Hz. So it should take 100000000 clock cycles before <mark>clk_div</mark> goes to ‘1’ and returns to ‘0’. In another words, it takes 50000000 clock cycles for <mark>clk_div</mark> to flip its value. So the constant you need to choose here is 50000000. Now start to describe the circuit:</p>
+<h3 data-source-line="77" id="declare-inputs-and-outputs">Declare Inputs and Outputs</h3>
+<p data-source-line="78">Create a Verilog module for clock divider.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> ClkDivider (
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> clk_div
+    );
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+<h3 data-source-line="89" id="declare-local-parameter">Declare Local Parameter</h3>
+<p data-source-line="91">Define the constant as a local parameter</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">localparam</span> constantNumber = <span class="hljs-number">50000000</span>;
+</code></pre>
+<h3 data-source-line="97" id="implement-the-clock-divider-behaviorally">Implement the clock Divider Behaviorally</h3>
+<p data-source-line="98">Describe the counter in an always block.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">reg</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] count;
+
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        count &lt;= <span class="hljs-number">32'b0</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (count == constantNumber - <span class="hljs-number">1</span>)
+        count &lt;= <span class="hljs-number">32'b0</span>;
+    <span class="hljs-keyword">else</span>
+        count &lt;= count + <span class="hljs-number">1</span>;
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p data-source-line="112">Describe the flip-flop together with the comparator as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        clk_div &lt;= <span class="hljs-number">1'b0</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (count == constNumber - <span class="hljs-number">1</span>)
+        clk_div &lt;= ~clk_div;
+    <span class="hljs-keyword">else</span>
+        clk_div &lt;= clk_div;
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 data-source-line="125" id="check-your-clock-divider-code">Check Your Clock Divider Code</h3>
+<p data-source-line="126">Double check your clock divider code by clicking:
+<button class="btn btn-sm btn-grey" data-target="#demo2" data-toggle="collapse" type="button"><strong>Show/Hide Code</strong></button></p>
+<div class="collapse" id="demo2">
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> ClkDivider (
+    <span class="hljs-keyword">input</span> clk,
+    <span class="hljs-keyword">input</span> rst,
+    <span class="hljs-keyword">output</span> <span class="hljs-keyword">reg</span> clk_div
+    );
+<span class="hljs-keyword">localparam</span> constantNumber = <span class="hljs-number">50000000</span>;
+<span class="hljs-keyword">reg</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] count;
+
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        count &lt;= <span class="hljs-number">32'b0</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (count == constantNumber - <span class="hljs-number">1</span>)
+        count &lt;= <span class="hljs-number">32'b0</span>;
+    <span class="hljs-keyword">else</span>
+        count &lt;= count + <span class="hljs-number">1</span>;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">always</span> @ (<span class="hljs-keyword">posedge</span>(clk), <span class="hljs-keyword">posedge</span>(rst))
+<span class="hljs-keyword">begin</span>
+    <span class="hljs-keyword">if</span> (rst == <span class="hljs-number">1'b1</span>)
+        clk_div &lt;= <span class="hljs-number">1'b0</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (count == constNumber - <span class="hljs-number">1</span>)
+        clk_div &lt;= ~clk_div;
+    <span class="hljs-keyword">else</span>
+        clk_div &lt;= clk_div;
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+</div>
+<h2 data-source-line="164" id="requirements">Requirements</h2>
+<h3 data-source-line="166" id="1-simulate-the-8-bit-counter"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Simulate the 8-bit Counter</h3>
+<p data-source-line="167">Simulate the 8-bit counter you created in step 1 and verify that it works correctly.</p>
+<h3 data-source-line="169" id="2-simulate-the-clock-divider-with-1hz-output"><i aria-hidden="true" class="fa fa-check-square-o"></i> 2. Simulate the Clock Divider With 1Hz Output</h3>
+<p data-source-line="170">Simulate the clock divider you created in step 2 with 1Hz output and verify that it works correctly.</p>
+<h3 data-source-line="172" id="3-blink-a-led-at-1hz"><i aria-hidden="true" class="fa fa-check-square-o"></i> 3. Blink a LED at 1Hz</h3>
+<p data-source-line="173">Implement your clock divider on your Blackboard to blink a LED at 1 Hz.</p>
+<h3 data-source-line="175" id="4-implement-an-8-bit-counter-that-counts-every-100ms-and-display-the-counter-value-on-the-leds"><i aria-hidden="true" class="fa fa-check-square-o"></i> 4. Implement an 8-bit Counter that Counts Every 100ms and Display the Counter Value on the LEDs</h3>
+<p data-source-line="176">Combine the 8-bit counter and the clock divider you created in steps 1 and 2, respectively. Create a wrapper module so that you have a counter that increases by 1 when the clock rising edge arrives and a clock divider that can provide a clock signal that is exactly 1 Hz. In the wrapper, you can use the output of the clock divider to provide the clock signal for the 8-bit counter. Thus, you get a counter that increases every second. Tie the outputs of the counter to the LEDs.</p>
+<h3 data-source-line="178" id="5-display-the-8-bit-counter-value-on-the-seven-segment-display"><i aria-hidden="true" class="fa fa-check-square-o"></i> 5. Display the 8-bit Counter Value on the Seven Segment Display</h3>
+<p data-source-line="179">You can reuse your code from <a class="btn btn-sm btn-default" href="/doc/361339eab38546c74161d53e5713289a"><strong>PROJECT 4.3: Seven Segment Display Decoder</strong></a> or write completely different code to accomplish this requirement.</p>
+<h2 data-source-line="181" id="next-project-vga-controller"><i aria-hidden="true" class="fa fa-sign-out"></i> Next Project: VGA Controller</h2>
+<p data-source-line="182">If you are confident in doing this porject, go ahead and continue with the next <a class="btn btn-sm btn-default" href="https://www.realdigital.org/doc/7b15f7118959ddbb406321737dcea7fe"><strong>PROJECT 6.3: VGA Controller</strong></a> for some extra practice!</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>

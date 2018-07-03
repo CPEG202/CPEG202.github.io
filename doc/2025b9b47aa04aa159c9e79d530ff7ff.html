@@ -1,0 +1,200 @@
+<font size='18'>
+ <a href='../index.html'>Home</a>
+ </font>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="Tinghui WANG" name="Author"/>
+<link href="/images/realdigital.ico" rel="icon" type="image/x-icon"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Welcome to Real Digital</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha2/katex.min.css" integrity="sha384-exe4Ak6B0EoJI0ogGxjJ8rn+RN3ftPnEQrGwX59KTCl5ybGzvHGKjhPKk/KC3abb" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" rel="stylesheet"/>
+<link href="/build/realdigital.c5563abade9aec1d0accf0b1c31118b8.css" rel="stylesheet"/>
+<link href="/build/css/app.381c5c1b85ba6633fac439a6eb0ba6f4.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-52236215-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</link></link></head>
+<body class="doc-page">
+
+<div class="wrapper">
+<div class="main main-raised">
+<article class="container-fluid">
+<div class="row">
+<div class="col col-main-content" id="doc-main-content">
+
+<div>
+<div class="title-box">
+<h1>Project
+                                    5.1
+                                            Delay and Glitch
+            </h1>
+<h2>Timing Analysis of Combinational Circuits</h2>
+</div>
+<div class="row mt-3">
+<div class="col text-left">
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">
+<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0"/>
+</a>
+</div>
+<div class="col text-right">
+<i class="fa fa-eye"></i>
+                624
+            </div>
+</div>
+</div>
+<h2 data-source-line="1" id="introduction">Introduction</h2>
+<p data-source-line="2">In this project, we are going to examine the delay in combinational circuits. We are going to tell the simulator of the delay of each gate in Verilog and simulate the circuits to see how delay can affect the behavior of a combinational circuit.</p>
+<div class="row"><div class="col-md-6"><h4 id="before-you-begin-you-should">Before you begin, you should:</h4>
+<ul>
+<li>Have Real Digital®’s Blackboard set up;</li>
+<li>Have the Xilinx® Vivado WebPACK™ installed;</li>
+<li>Download <a class="btn btn-sm btn-warning" href="/downloads/3f4ceaee772ee5bbd654cf96f936de90.pdf"><strong>Submission Form 5</strong></a> <a class="btn btn-sm btn-warning" href="/downloads/e13cc24ee1827193ed75ae8eea9e847b.pdf"><strong>Problem Set 5</strong></a>;</li>
+<li>Be able to derive a logic equation from a truth table;</li>
+<li>Be able to describe logic functions using Verilog HDL and implement them in FPGA;</li>
+<li>Be able to write test bench and use the Xilinx® Vivado Simulator;</li>
+</ul>
+</div><div class="col-lg-6 col-md-6 col-sm-12"><h4 id="after-youre-done-you-should">After you’re done, you should:</h4>
+<ul>
+<li>Understand the cause of a glitch in digital circuits and how to eliminate static glitch by adding extra logic gates;</li>
+<li>Understand how to simulate circuit with delay parameters.</li>
+</ul>
+</div></div><h2 data-source-line="22" id="background">Background</h2>
+<div class="row"><div class="col-md-9"><p>Before starting with the design process, it is important to understand some background information about delay and glitches. Within the right column, you’ll find series of background topics that will be very beneficial for you to read through before continuing with this project.</p>
+</div><div class="col-lg-3 col-md-6 col-sm-12"><ul>
+<li><a class="btn btn-group-justified btn-sm btn-success" href="/doc/e0a5d48a7ec1903720ebd9f9f707e1a0"><strong>Delay</strong></a></li>
+<li><a class="btn btn-group-justified btn-sm btn-success" href="/doc/ff991122c4d78b897d96b4091f65eb31"><strong>Glitches</strong></a></li>
+</ul>
+</div></div><h2 data-source-line="33" id="step-1-implement-the-circuit-in-verilog">Step 1: Implement the Circuit in Verilog</h2>
+<div class="row"><div class="col-md-9"><p>In this project, you are going to implement a circuit in Verilog and simulate it, taking delay into consideration. The circuit schematic is shown in Fig. 1, and the delay of each gate is marked in red.</p>
+</div><div class="col-lg-3"><figure><img alt="Figure 1. Circuit Diagram" src="../images/31b99b7dcf318db0f5529a8aa9306038.svg"/><figcaption>Figure 1. Circuit Diagram</figcaption></figure>
+</div></div><h3 data-source-line="45" id="declare-the-combinational-circuit-module">Declare the Combinational Circuit Module</h3>
+<p data-source-line="46">The circuit shown in figure 1 has three inputs <code>A</code>, <code>B</code>, and <code>C</code>, and one output <code>X</code>. So, the declaration of the module goes as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">module</span> CombCirc(
+   <span class="hljs-keyword">input</span> A,
+   <span class="hljs-keyword">input</span> B,
+   <span class="hljs-keyword">input</span> C,
+   <span class="hljs-keyword">output</span> X
+   );
+
+<span class="hljs-comment">// Circuit Description</span>
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+<h3 data-source-line="61" id="implement-circuit-with-delay">Implement Circuit with Delay</h3>
+<p data-source-line="62">The goal of this project is to simulate the delay of logic gates and analyze its effect on the circuit behavior. So, you need to describe each logic gate use an <code>assign</code> statement with delay command as shown in the code block below.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">wire</span> N1, N2, N3;
+
+<span class="hljs-comment">// AND gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N1 = A &amp; B;
+<span class="hljs-comment">// Not Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N2 = ~B;
+<span class="hljs-comment">// And Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N3 = N2 &amp; C;
+<span class="hljs-comment">// Or Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> X = N1 | N3;
+</code></pre>
+<p data-source-line="76">In the codes above, <code>N1</code>, <code>N2</code> and <code>N3</code> are three internal signals as labeled in figure 1. Each gate has a delay of 1 reference time unit. In order to make the delay 1ns for each gate, you need to define the reference time unit as 1ns using command <code>'timescale</code> at the beginning of the file.</p>
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> CombCirc(
+...
+</code></pre>
+<h3 data-source-line="84" id="check-your-source-file">Check Your Source File</h3>
+<p data-source-line="85">So the Verilog file that describes the circuit with delay information of each gate looks as follows:</p>
+<pre><code class="hljs language-verilog"><span class="hljs-meta">`<span class="hljs-meta-keyword">timescale</span> 1ns / 1ps</span>
+<span class="hljs-keyword">module</span> CombCirc(
+    <span class="hljs-keyword">input</span> A,
+    <span class="hljs-keyword">input</span> B,
+    <span class="hljs-keyword">input</span> C,
+    <span class="hljs-keyword">output</span> X
+    );
+
+<span class="hljs-keyword">wire</span> N1, N2, N3;
+
+<span class="hljs-comment">// AND gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N1 = A &amp; B;
+<span class="hljs-comment">// Not Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N2 = ~B;
+<span class="hljs-comment">// And Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> N3 = N2 &amp; C;
+<span class="hljs-comment">// Or Gate with 1ns delay</span>
+<span class="hljs-keyword">assign</span> #<span class="hljs-number">1</span> X = N1 | N3;
+
+<span class="hljs-keyword">endmodule</span>
+</code></pre>
+<h2 data-source-line="108" id="step-2-create-the-test-bench-and-simulate-the-circuit">Step 2: Create the Test Bench and Simulate the Circuit</h2>
+<p data-source-line="109">In order to simulate glitch, you will need to generate an input sequence in your testbench that can cause the glitch to appear at the output of the circuit. By observing the circuit, there is an unbalanced path between input <code>B</code> and output <code>X</code> (i.e., there are two paths to propagate the changes of <code>B</code> to the output with different delays). So, the glitch will happen when <code>A</code> and <code>C</code> are held constant and <code>B</code> is toggled. The codes below generates a sequence where <code>B</code> changes from <mark>1</mark> to <mark>0</mark> and back to <mark>1</mark> when <code>A</code> and <code>C</code> are held constant. Do not forget to instantiate the <code>CombCirc</code> module in your test bench and connect the inputs and outputs to internal signals!</p>
+<pre><code class="hljs language-verilog"><span class="hljs-keyword">integer</span> k = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">initial</span> <span class="hljs-keyword">begin</span>
+    <span class="hljs-comment">// Initialize Inputs</span>
+    A = <span class="hljs-number">0</span>;
+    B = <span class="hljs-number">0</span>;
+    C = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// Wait 100 ns for global reset to finish</span>
+    <span class="hljs-comment">// Add stimulus here</span>
+
+    <span class="hljs-keyword">for</span>(k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">4</span>; k=k+<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">begin</span>
+        {A,C} = k;
+        #<span class="hljs-number">5</span> B = <span class="hljs-number">1</span>;
+        #<span class="hljs-number">5</span> B = <span class="hljs-number">0</span>;
+        #<span class="hljs-number">5</span> ;
+    <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<h3 data-source-line="133" id="simulate-the-test-bench">Simulate the test bench</h3>
+<p data-source-line="134">Now, you can simulate your test bench in the Vivado simulator, and you will get the waveform as shown in figure 2 below. The red circle on the waveform specifies the glitch. It happens when <code>A</code> is <mark>1</mark>, <code>C</code> is <mark>1</mark> and <code>B</code> changes from <mark>1</mark> to <mark>0</mark>. The duration of the glitch is 1ns.</p>
+<figure data-source-line="136"><img alt="Figure 2. Simulation Waveform of the Circuit" src="../images/7796e868a151c1b05d6ef0f27f360193.png"/><figcaption>Figure 2. Simulation Waveform of the Circuit</figcaption></figure>
+<h2 data-source-line="138" id="requirements">Requirements</h2>
+<h3 data-source-line="140" id="1-simulate-combcirc-module-and-show-the-glitch"><i aria-hidden="true" class="fa fa-check-square-o"></i> 1. Simulate <code>CombCirc</code> Module and Show the Glitch</h3>
+<p data-source-line="141">Create a test bench for the <mark>multiplexer circuit</mark> discussed in this section. Your testbench has to be written so to that you would test <mark>all possible input patterns</mark>.</p>
+<h3 data-source-line="143" id="2-change-or-gate-delay-to-2-ns-and-simulate-the-circuit"><i aria-hidden="true" class="fa fa-check-square-o"></i> 2. Change OR Gate Delay to 2 ns and Simulate the Circuit</h3>
+<p data-source-line="144">Assume the OR gate in the previous circuit has a propagation delay of 2 ns. Simulate the circuit again and try to find the glitch. If there is a glitch, when does it occur and what is the duration of the glitch? If there is no glitch, can you explain why? Think about the differences in path delay for signal B.</p>
+<h3 data-source-line="146" id="3-change-the-delay-of-all-gates-to-5ns-and-simulate-the-circuit"><i aria-hidden="true" class="fa fa-check-square-o"></i> 3. Change the Delay of All Gates to 5ns and Simulate the Circuit</h3>
+<p data-source-line="147">Assume the delay of all gates are 5 ns. Modify the <code>CombCirc</code> module and the test bench properly and try to find the glitch. If there is a glitch, when does it occur and what is the duration of the glitch? If there is no glitch, can you explain why?</p>
+<h2 data-source-line="149" id="next-project-sr-latch"><i aria-hidden="true" class="fa fa-sign-out"></i> Next Project: SR-Latch</h2>
+<p data-source-line="150">If you are confident in doing this project, go ahead and continue with the next <a class="btn btn-sm btn-default" href="/doc/a6aff054a5166eb4e9235ddd24411caf"> <strong>Project 5.2: SR-Latch</strong></a> for some extra practice!</p>
+</div>
+<div class="col col-toc">
+<nav class="sticky-top sticky" id="doc-toc">
+</nav>
+</div>
+</div>
+</article>
+</div>
+<div aria-hidden="true" aria-labelledby="imagePreview" class="modal fade" id="docImagePreviewModal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg" role="document" style="max-width: 80vw;">
+
+</div>
+</div>
+</div>
+<footer class="page-footer center-on-small-only">
+<div class="container-fluid">
+<div class="footer-copyright">
+            Copyright © 2018 realdigital.org. All Rights Reserved.<br/>
+            Documents licensed <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC SA 4.0</a>.
+        </div>
+</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
+<script src="/build/manifest.d41d8cd98f00b204e980.js" type="text/javascript"></script>
+<script src="/build/realdigital.de4335d491c4f4582d5e.js" type="text/javascript"></script>
+<script src="/build/js/app.b4b1f84db5840c3f9f81.js" type="text/javascript"></script>
+<script>new WOW().init();</script>
+</body>
+</html>
